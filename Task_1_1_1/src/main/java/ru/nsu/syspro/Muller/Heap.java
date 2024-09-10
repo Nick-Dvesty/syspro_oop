@@ -4,16 +4,23 @@ import static java.util.Collections.swap;
 
 import java.util.Vector;
 
+/**
+ * ordinary Binary Heap
+ */
 public class Heap {
 
     private Vector<Integer> heap;
 
+    /**
+     * empty constructor
+     */
     public Heap() {
         heap = new Vector<Integer>();
     }
 
     /**
      * Insert the new element
+     * @param value new element
      */
     public void Insert(int value) {
         heap.add(value);
