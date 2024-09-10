@@ -8,6 +8,7 @@ public class HeapSort {
     /**
      * heap sort in ascending order
      * @param arr unsorted array
+     *
      * @return sorted array
      */
     static public int[] heapSort(int[] arr) {

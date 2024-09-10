@@ -19,7 +19,8 @@ public class Heap {
     }
 
     /**
-     * Insert the new element.
+     * insert the new element.
+     *
      * @param value new element
      */
     public void Insert(int value) {
@@ -29,6 +30,7 @@ public class Heap {
 
     /**
      * returns the minimum element.
+     *
      * @return minimum element
      */
     public int PeekMin(){
@@ -37,6 +39,7 @@ public class Heap {
 
     /**
      * returns and remove the minimum element.
+     *
      * @return minimum element
      */
     public int ExtractMin(){
