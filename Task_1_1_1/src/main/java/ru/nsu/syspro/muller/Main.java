@@ -1,7 +1,4 @@
-package ru.nsu.syspro.Muller;
-
-import ru.nsu.syspro.Muller.Heap;
-import ru.nsu.syspro.Muller.HeapSort;
+package ru.nsu.syspro.muller;
 
 /**
  * start point class

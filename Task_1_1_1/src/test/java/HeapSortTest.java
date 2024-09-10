@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.syspro.Muller.HeapSort;
+import ru.nsu.syspro.muller.HeapSort;
 
 public class HeapSortTest {
 

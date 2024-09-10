@@ -1,6 +1,4 @@
-package ru.nsu.syspro.Muller;
-
-import ru.nsu.syspro.Muller.Heap;
+package ru.nsu.syspro.muller;
 
 /**
  * static class for heapsort integer array

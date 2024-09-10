@@ -1,4 +1,4 @@
-package ru.nsu.syspro.Muller;
+package ru.nsu.syspro.muller;
 
 import static java.util.Collections.swap;
 
