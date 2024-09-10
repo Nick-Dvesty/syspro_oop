@@ -5,21 +5,21 @@ import static java.util.Collections.swap;
 import java.util.Vector;
 
 /**
- * ordinary Binary Heap
+ * ordinary Binary Heap.
  */
 public class Heap {
 
     private Vector<Integer> heap;
 
     /**
-     * empty constructor
+     * empty constructor.
      */
     public Heap() {
         heap = new Vector<Integer>();
     }
 
     /**
-     * Insert the new element
+     * Insert the new element.
      * @param value new element
      */
     public void Insert(int value) {
@@ -28,7 +28,7 @@ public class Heap {
     }
 
     /**
-     * returns the minimum element
+     * returns the minimum element.
      * @return minimum element
      */
     public int PeekMin(){
@@ -36,7 +36,7 @@ public class Heap {
     }
 
     /**
-     * returns and remove the minimum element
+     * returns and remove the minimum element.
      * @return minimum element
      */
     public int ExtractMin(){
