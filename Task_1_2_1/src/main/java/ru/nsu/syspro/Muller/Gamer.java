@@ -2,13 +2,28 @@ package ru.nsu.syspro.Muller;
 
 import java.util.ArrayList;
 
-
+/**
+ * class a class of generalized player behavior.
+ */
 public class Gamer {
+
+    /**
+     * The player has a list of cards.
+     */
     private final ArrayList<Card> cards;
 
+    /**
+     * default constructor.
+     */
     public Gamer() {
         cards = new ArrayList<>();
     }
+
+    /**
+     * Print cards gamer.
+     *
+     * @return test for print
+     */
     public String PrintCards() {
         StringBuilder printLine = new StringBuilder();
         boolean HaveClosed = false;
@@ -22,16 +37,36 @@ public class Gamer {
         if (!HaveClosed) printLine.append(" => ").append(GetSum());
         return printLine.toString();
     }
+
+    /**
+     * add gamer's one card from desk.
+     *
+     * @param deskCard donor desk card
+     * @param closed close condition
+     * @return added card
+     */
     public Card TakeCard(DeskCard deskCard, boolean closed) {
         cards.add(deskCard.GetOneCard(closed));
         int sum = GetSum();
         if (sum > 21) repairDesk();
         return cards.getLast();
     }
+
+    /**
+     * open last card.
+     *
+     * @return text last card
+     */
     public String OpenLastCards(){
             cards.getLast().Open();
             return cards.getLast().PrintText();
     }
+
+    /**
+     * return sum cost.
+     *
+     * @return sum cost
+     */
     public int GetSum(){
         int sum = 0;
         for (Card card : cards) {

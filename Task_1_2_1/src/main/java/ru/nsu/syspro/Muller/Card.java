@@ -4,6 +4,7 @@ package ru.nsu.syspro.Muller;
  * the class of the game card.
  */
 public class Card {
+
     private boolean closed;
 
     /**
