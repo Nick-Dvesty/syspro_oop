@@ -2,8 +2,6 @@ package ru.nsu.syspro.Muller;
 
 import java.util.LinkedList;
 import java.util.Random;
-import javax.xml.stream.FactoryConfigurationError;
-import ru.nsu.syspro.Muller.Card;
 
 public class DeskCard {
     private int countDeskCards;

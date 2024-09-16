@@ -15,20 +15,20 @@ public class Game {
     Game(int countDesk, int countRound) {
         this.CountDesk = countDesk;
         this.CountRound = countRound;
-        player = new Gamer();
-        dealer = new Gamer();
         CountPointDealer = 0;
         CountPointPlayer = 0;
     }
     public void StartGame() {
         System.out.println("Добро пожаловать в Блэкджек!");
-        for (int i = 0; i < CountDesk; i++) {
+        for (int i = 0; i < CountRound; i++) {
             StartRound(i);
         };
     }
     private void StartRound(int round) {
         deskCard = new DeskCard(CountDesk);
-        System.out.println("Раунд 1");
+        player = new Gamer();
+        dealer = new Gamer();
+        System.out.println("Раунд " + round);
         System.out.println("Дилер раздал карты");
         player.TakeCard(deskCard, false);
         player.TakeCard(deskCard, false);
@@ -50,8 +50,9 @@ public class Game {
             switch (action) {
                 case '1': {
                     var thisCard = player.TakeCard(deskCard, false);
-                    System.out.println("Вы открыли карту" + thisCard.PrintText());
+                    System.out.println("Вы открыли карту " + thisCard.PrintText());
                     printSituation();
+                    System.out.println();
                     continue;
                 }
                 case '0': return true;
@@ -60,11 +61,13 @@ public class Game {
     }
     private void moveDealer() {
         System.out.println("Ход дилера \n -------");
-        System.out.println("Дилер открывает закрытую карту" + dealer.OpenLastCards());
-        while (dealer.GetSum() >= 17) {
+        System.out.println("Дилер открывает закрытую карту " + dealer.OpenLastCards());
+        printSituation();
+        while (dealer.GetSum() < 17) {
             var thisCard = dealer.TakeCard(deskCard, false);
             System.out.println("Дилер открывает карту " + thisCard.PrintText());
             printSituation();
+            System.out.println();
         }
     }
     private void results() {
@@ -72,7 +75,9 @@ public class Game {
         else if (player.GetSum() > 21) CountPointDealer += 1;
         else if (player.GetSum() == 21) CountPointPlayer += 1;
         else if (dealer.GetSum() == 21) CountPointDealer += 1;
-        System.out.println("Очки игрока: " + CountPointPlayer + "Очки дилера" + CountPointDealer);
+        else if (player.GetSum() > dealer.GetSum()) CountPointPlayer += 1;
+        else if (player.GetSum() < dealer.GetSum()) CountPointDealer += 1;
+        System.out.println("Очки игрока: " + CountPointPlayer + " Очки дилера: " + CountPointDealer);
     }
     private void printSituation() {
         System.out.println("    Ваши карты: " + player.PrintCards());

@@ -14,6 +14,7 @@ public class Gamer {
         boolean HaveClosed = false;
         printLine.append("[ ");
         for (int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).IsClosed()) HaveClosed = true;
             printLine.append(cards.get(i).PrintText());
             if (i != cards.size() - 1) printLine.append(", ");
         }
