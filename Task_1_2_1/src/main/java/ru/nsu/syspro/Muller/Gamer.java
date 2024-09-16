@@ -22,15 +22,14 @@ public class Gamer {
         return printLine.toString();
     }
     public Card TakeCard(DeskCard deskCard, boolean closed) {
-        cards.add(deskCard.GetOneCard());
+        cards.add(deskCard.GetOneCard(closed));
         int sum = GetSum();
         if (sum > 21) repairDesk();
         return cards.getLast();
     }
-    public void OpenCards(){
-        for (Card card : cards) {
-            if (card.IsClosed())card.Open();
-        }
+    public String OpenLastCards(){
+            cards.getLast().Open();
+            return cards.getLast().PrintText();
     }
     public int GetSum(){
         int sum = 0;
