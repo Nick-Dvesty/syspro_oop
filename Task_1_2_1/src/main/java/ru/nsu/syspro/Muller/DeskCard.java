@@ -1,5 +1,7 @@
 package ru.nsu.syspro.Muller;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -17,17 +19,29 @@ public class DeskCard {
      */
     public DeskCard(int countDeskCards) {
         String[] masks = {"треф", "бубён", "пик", "червей"};
-        String[] names = {"Двойка", "Тройка", "Четвёрка", "Пятёрка", "Шестёрка", "Семёрка",
-            "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"};
-        int[] costs = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
+        Tuple[] dataCards = {new Tuple("Двойка", 2), new Tuple("Тройка", 3), new Tuple("Четвёрка", 4),
+            new Tuple("Пятёрка", 5), new Tuple("Шестёрка", 6), new Tuple("Семёрка", 7),
+            new Tuple("Восьмёрка", 8), new Tuple("Девятка", 9), new Tuple("Десятка", 10),
+            new Tuple("Валет", 10), new Tuple("Дама", 10), new Tuple("Король", 10),
+            new Tuple("Туз", 11)};
         cards = new LinkedList<>();
         for (int i = 0; i < countDeskCards; i++) {
             for (String mask : masks) {
-                for (int k = 0; k < costs.length; k++) {
-                    cards.add(new Card(costs[k], names[k] + " " + mask));
+                for (int k = 0; k < dataCards.length; k++) {
+                    cards.add(new Card(dataCards[k].getItem2(), dataCards[k].getItem1() + " " + mask));
                 }
             }
         }
+    }
+
+    /**
+     * Constructor for test or cheaters.
+     *
+     * @param Cards array certain cards
+     */
+    public DeskCard(Card[] Cards){
+        cards = new LinkedList<Card>();
+        Collections.addAll(cards, Cards);
     }
 
     /**
@@ -58,5 +72,25 @@ public class DeskCard {
         var card = cards.remove(rand.nextInt(cards.size()));
         if (IsClosed) card.Close();
         return card;
+    }
+
+    private class Tuple {
+
+        private String  item1;
+        private int item2;
+
+        public Tuple(String item1, int item2) {
+            this.item1 = item1;
+            this.item2 = item2;
+        }
+
+        public String getItem1() {
+            return item1;
+        }
+
+        public int getItem2() {
+            return item2;
+        }
+
     }
 }

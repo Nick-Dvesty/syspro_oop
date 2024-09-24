@@ -1,5 +1,7 @@
 package ru.nsu.syspro.Muller;
 
+import java.util.Scanner;
+
 /**
  * start point class.
  */
@@ -16,7 +18,15 @@ public class Main {
      * @param args arguments command liner
      */
     public static void main(String[] args) {
-    Game game = new Game(1,2);
-    game.StartGame();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите количество колод, которые будут использоваться для игры: ");
+        int countDesks = scanner.nextInt();
+
+        System.out.print("Введите количество раундов в игре: ");
+        int countRound = scanner.nextInt();
+        Game game = new Game(countDesks,countRound);
+        game.StartGame();
+        scanner.close();
     }
 }

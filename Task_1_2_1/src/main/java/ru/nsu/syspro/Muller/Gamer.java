@@ -14,7 +14,7 @@ public class Gamer {
 
     /**
      * default constructor.
-     */
+ */
     public Gamer() {
         cards = new ArrayList<>();
     }
