@@ -38,7 +38,7 @@ public class DeskCard {
      *
      * @param Cards array certain cards
      */
-    public DeskCard(Card[] Cards){
+    public DeskCard(Card[] Cards) {
         cards = new LinkedList<Card>();
         Collections.addAll(cards, Cards);
     }

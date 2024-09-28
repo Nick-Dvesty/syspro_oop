@@ -13,13 +13,13 @@ public class Game {
 
     private DeskCard deskCard;
 
-    private int CountDesk;
+    private final int countDesk;
 
-    private int CountRound;
+    private final int countRound;
 
-    private int CountPointPlayer;
+    private int countPointPlayer;
 
-    private int CountPointDealer;
+    private int countPointDealer;
 
     /**
      * Base constructor.
@@ -28,10 +28,10 @@ public class Game {
      * @param countRound count round game
      */
     Game(int countDesk, int countRound) {
-        this.CountDesk = countDesk;
-        this.CountRound = countRound;
-        CountPointDealer = 0;
-        CountPointPlayer = 0;
+        this.countDesk = countDesk;
+        this.countRound = countRound;
+        countPointDealer = 0;
+        countPointPlayer = 0;
     }
 
     /**
@@ -39,13 +39,13 @@ public class Game {
      */
     public void startGame() {
         System.out.println("Добро пожаловать в Блэкджек!");
-        for (int i = 0; i < CountRound; i++) {
+        for (int i = 0; i < countRound; i++) {
             startRound(i);
-        };
+        }
     }
 
     private void startRound(int round) {
-        deskCard = new DeskCard(CountDesk);
+        deskCard = new DeskCard(countDesk);
         player = new Gamer();
         dealer = new Gamer();
         System.out.println("Раунд " + round);
@@ -56,7 +56,9 @@ public class Game {
         dealer.takeCard(deskCard, true);
         printSituation();
         boolean continuum =  movePlayer();
-        if (continuum) moveDealer();
+        if (continuum) {
+            moveDealer();
+        }
         results();
 
     }
@@ -65,7 +67,9 @@ public class Game {
         System.out.println("Ваш ход \n -------");
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            if (player.getSum() >= 21) return false;
+            if (player.getSum() >= 21) {
+                return false;
+            }
             System.out.println("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться...");
             char action = scanner.next().charAt(0);
             switch (action) {
@@ -94,13 +98,25 @@ public class Game {
     }
 
     private void results() {
-        if (dealer.getSum() > 21) CountPointPlayer += 1;
-        else if (player.getSum() > 21) CountPointDealer += 1;
-        else if (player.getSum() == 21) CountPointPlayer += 1;
-        else if (dealer.getSum() == 21) CountPointDealer += 1;
-        else if (player.getSum() > dealer.getSum()) CountPointPlayer += 1;
-        else if (player.getSum() < dealer.getSum()) CountPointDealer += 1;
-        System.out.println("Очки игрока: " + CountPointPlayer + " Очки дилера: " + CountPointDealer);
+        if (dealer.getSum() > 21) {
+            countPointPlayer += 1;
+        }
+        else if (player.getSum() > 21) {
+            countPointDealer += 1;
+        }
+        else if (player.getSum() == 21) {
+            countPointPlayer += 1;
+        }
+        else if (dealer.getSum() == 21) {
+            countPointDealer += 1;
+        }
+        else if (player.getSum() > dealer.getSum()) {
+            countPointPlayer += 1;
+        }
+        else if (player.getSum() < dealer.getSum()) {
+            countPointDealer += 1;
+        }
+        System.out.println("Очки игрока: " + countPointPlayer + " Очки дилера: " + countPointDealer);
     }
 
     private void printSituation() {

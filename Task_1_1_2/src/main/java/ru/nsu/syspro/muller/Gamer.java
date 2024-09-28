@@ -57,7 +57,7 @@ public class Gamer {
      *
      * @return text last card
      */
-    public String openLastCards(){
+    public String openLastCards() {
             cards.getLast().open();
             return cards.getLast().printText();
     }
@@ -67,7 +67,7 @@ public class Gamer {
      *
      * @return sum cost
      */
-    public int getSum(){
+    public int getSum() {
         int sum = 0;
         for (Card card : cards) {
             sum += card.getCost();

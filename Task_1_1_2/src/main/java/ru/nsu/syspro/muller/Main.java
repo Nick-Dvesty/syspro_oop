@@ -10,7 +10,7 @@ public class Main {
     /**
      * without this, the tests on the git fail.
      */
-    public Main(){};
+    public Main() {}
 
     /**
      * start point method.
@@ -25,7 +25,7 @@ public class Main {
 
         System.out.print("Введите количество раундов в игре: ");
         int countRound = scanner.nextInt();
-        Game game = new Game(countDesks,countRound);
+        Game game = new Game(countDesks, countRound);
         game.startGame();
         scanner.close();
     }

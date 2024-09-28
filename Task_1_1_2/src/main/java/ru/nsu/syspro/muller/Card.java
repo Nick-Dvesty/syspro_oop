@@ -43,14 +43,14 @@ public class Card {
     /**
      * open card.
      */
-    public void open(){
+    public void open() {
         this.closed = false;
     }
 
     /**
      * close card.
      */
-    public void close(){
+    public void close() {
         this.closed = true;
     }
 
@@ -59,7 +59,7 @@ public class Card {
      *
      * @return text
      */
-    public String printText(){
+    public String printText() {
         if (!closed) {
             return label + " (" + getCost() + ")";
         } else {
@@ -81,7 +81,7 @@ public class Card {
      *
      * @return value closed
      */
-    public boolean isClosed(){
+    public boolean isClosed() {
         return closed;
     }
 }
