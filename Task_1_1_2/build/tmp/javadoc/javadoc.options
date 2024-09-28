@@ -1,0 +1,11 @@
+-classpath '/home/modnick/Documents/ProgramProjects/IdeaProject/syspro_oop/Task_1_2_1/build/classes/java/main:/home/modnick/Documents/ProgramProjects/IdeaProject/syspro_oop/Task_1_2_1/build/resources/main'
+-d '/home/modnick/Documents/ProgramProjects/IdeaProject/syspro_oop/Task_1_2_1/build/docs/javadoc'
+-doctitle 'Task_1_2_1 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'Task_1_2_1 1.0-SNAPSHOT API'
+'/home/modnick/Documents/ProgramProjects/IdeaProject/syspro_oop/Task_1_2_1/src/main/java/ru/nsu/syspro/Muller/Gamer.java'
+'/home/modnick/Documents/ProgramProjects/IdeaProject/syspro_oop/Task_1_2_1/src/main/java/ru/nsu/syspro/Muller/Card.java'
+'/home/modnick/Documents/ProgramProjects/IdeaProject/syspro_oop/Task_1_2_1/src/main/java/ru/nsu/syspro/Muller/Main.java'
+'/home/modnick/Documents/ProgramProjects/IdeaProject/syspro_oop/Task_1_2_1/src/main/java/ru/nsu/syspro/Muller/DeskCard.java'
+'/home/modnick/Documents/ProgramProjects/IdeaProject/syspro_oop/Task_1_2_1/src/main/java/ru/nsu/syspro/Muller/Game.java'
