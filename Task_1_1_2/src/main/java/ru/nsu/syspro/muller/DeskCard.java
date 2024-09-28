@@ -48,7 +48,9 @@ public class DeskCard {
      *
      * @return value count cards
      */
-    public int getCountCards() { return cards.size(); }
+    public int getCountCards() {
+        return cards.size();
+    }
 
     /**
      * return and cut one card without parameter closed.
@@ -62,14 +64,18 @@ public class DeskCard {
     /**
      * return and cut one card.
      *
-     * @param IsClosed closed condition
+     * @param isClosed closed condition
      * @return random card from desk
      */
-    public Card getOneCard(boolean IsClosed) {
-        if (cards.isEmpty()) return null;
+    public Card getOneCard(boolean isClosed) {
+        if (cards.isEmpty()) {
+            return null;
+        }
         Random rand = new Random();
         var card = cards.remove(rand.nextInt(cards.size()));
-        if (IsClosed) card.close();
+        if (isClosed) {
+            card.close();
+        }
         return card;
     }
 
