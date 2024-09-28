@@ -26,15 +26,21 @@ public class Gamer {
      */
     public String printCards() {
         StringBuilder printLine = new StringBuilder();
-        boolean HaveClosed = false;
+        boolean haveClosed = false;
         printLine.append("[ ");
         for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).isClosed()) HaveClosed = true;
+            if (cards.get(i).isClosed()) {
+                haveClosed = true;
+            }
             printLine.append(cards.get(i).printText());
-            if (i != cards.size() - 1) printLine.append(", ");
+            if (i != cards.size() - 1) {
+                printLine.append(", ");
+            }
         }
         printLine.append(" ]");
-        if (!HaveClosed) printLine.append(" => ").append(getSum());
+        if (!haveClosed) {
+            printLine.append(" => ").append(getSum());
+        }
         return printLine.toString();
     }
 
@@ -48,7 +54,9 @@ public class Gamer {
     public Card takeCard(DeskCard deskCard, boolean closed) {
         cards.add(deskCard.getOneCard(closed));
         int sum = getSum();
-        if (sum > 21) repairDesk();
+        if (sum > 21) {
+            repairDesk();
+        }
         return cards.getLast();
     }
 
@@ -58,8 +66,8 @@ public class Gamer {
      * @return text last card
      */
     public String openLastCards() {
-            cards.getLast().open();
-            return cards.getLast().printText();
+        cards.getLast().open();
+        return cards.getLast().printText();
     }
 
     /**

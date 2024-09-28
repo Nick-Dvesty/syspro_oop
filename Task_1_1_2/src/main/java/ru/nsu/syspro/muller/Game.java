@@ -81,6 +81,7 @@ public class Game {
                     continue;
                 }
                 case '0': return true;
+                default: continue;
             }
         }
     }
@@ -100,23 +101,19 @@ public class Game {
     private void results() {
         if (dealer.getSum() > 21) {
             countPointPlayer += 1;
-        }
-        else if (player.getSum() > 21) {
+        } else if (player.getSum() > 21) {
             countPointDealer += 1;
-        }
-        else if (player.getSum() == 21) {
+        } else if (player.getSum() == 21) {
             countPointPlayer += 1;
-        }
-        else if (dealer.getSum() == 21) {
+        } else if (dealer.getSum() == 21) {
             countPointDealer += 1;
-        }
-        else if (player.getSum() > dealer.getSum()) {
+        } else if (player.getSum() > dealer.getSum()) {
             countPointPlayer += 1;
-        }
-        else if (player.getSum() < dealer.getSum()) {
+        } else if (player.getSum() < dealer.getSum()) {
             countPointDealer += 1;
         }
-        System.out.println("Очки игрока: " + countPointPlayer + " Очки дилера: " + countPointDealer);
+        System.out.println("Очки игрока: " + countPointPlayer + " Очки дилера: "
+            + countPointDealer);
     }
 
     private void printSituation() {

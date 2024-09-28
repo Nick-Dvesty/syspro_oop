@@ -68,7 +68,7 @@ public class Card {
     }
 
     /**
-     * return value cost
+     * return value cost.
      *
      * @return value cost
      */
