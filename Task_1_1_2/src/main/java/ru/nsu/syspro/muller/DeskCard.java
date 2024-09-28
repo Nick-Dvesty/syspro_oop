@@ -1,6 +1,5 @@
-package ru.nsu.syspro.Muller;
+package ru.nsu.syspro.muller;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Random;
@@ -49,15 +48,15 @@ public class DeskCard {
      *
      * @return value count cards
      */
-    public int GetCountCards() { return cards.size(); }
+    public int getCountCards() { return cards.size(); }
 
     /**
      * return and cut one card without parameter closed.
      *
      * @return random card from desk
      */
-    public Card GetOneCard() {
-        return GetOneCard(false);
+    public Card getOneCard() {
+        return getOneCard(false);
     }
 
     /**
@@ -66,11 +65,11 @@ public class DeskCard {
      * @param IsClosed closed condition
      * @return random card from desk
      */
-    public Card GetOneCard(boolean IsClosed) {
+    public Card getOneCard(boolean IsClosed) {
         if (cards.isEmpty()) return null;
         Random rand = new Random();
         var card = cards.remove(rand.nextInt(cards.size()));
-        if (IsClosed) card.Close();
+        if (IsClosed) card.close();
         return card;
     }
 

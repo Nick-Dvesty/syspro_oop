@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.syspro.Muller.Card;
-import ru.nsu.syspro.Muller.DeskCard;
-import ru.nsu.syspro.Muller.Gamer;
+import ru.nsu.syspro.muller.Card;
+import ru.nsu.syspro.muller.DeskCard;
+import ru.nsu.syspro.muller.Gamer;
 
 /**
  * Test for gamer class.
@@ -13,9 +13,9 @@ public class GamerTest {
         Gamer gamer = new Gamer();
         Card[] cards = new Card[]{new Card(2, "Двойка треф")};
         DeskCard deskCard = new DeskCard(cards);
-        gamer.TakeCard(deskCard, false);
-        Assertions.assertEquals(gamer.PrintCards(), "[ Двойка треф (2) ] => 2");
-        Assertions.assertEquals(gamer.GetSum(), 2);
+        gamer.takeCard(deskCard, false);
+        Assertions.assertEquals(gamer.printCards(), "[ Двойка треф (2) ] => 2");
+        Assertions.assertEquals(gamer.getSum(), 2);
     }
 
     @Test
@@ -23,12 +23,12 @@ public class GamerTest {
         Gamer gamer = new Gamer();
         Card[] cards = new Card[]{new Card(2, "Двойка треф")};
         DeskCard deskCard = new DeskCard(cards);
-        gamer.TakeCard(deskCard, false);
+        gamer.takeCard(deskCard, false);
         cards = new Card[]{new Card(3, "Тройка треф")};
         deskCard = new DeskCard(cards);
-        gamer.TakeCard(deskCard, false);
-        Assertions.assertEquals(gamer.PrintCards(), "[ Двойка треф (2), Тройка треф (3) ] => 5");
-        Assertions.assertEquals(gamer.GetSum(), 5);
+        gamer.takeCard(deskCard, false);
+        Assertions.assertEquals(gamer.printCards(), "[ Двойка треф (2), Тройка треф (3) ] => 5");
+        Assertions.assertEquals(gamer.getSum(), 5);
     }
 
     @Test
@@ -36,11 +36,11 @@ public class GamerTest {
         Gamer gamer = new Gamer();
         Card[] cards = new Card[]{new Card(2, "Двойка треф")};
         DeskCard deskCard = new DeskCard(cards);
-        gamer.TakeCard(deskCard, true);
-        Assertions.assertEquals(gamer.PrintCards(), "[ <закрытая карта> ]");
-        Assertions.assertEquals(gamer.GetSum(), 2);
-        gamer.OpenLastCards();
-        Assertions.assertEquals(gamer.PrintCards(), "[ Двойка треф (2) ] => 2");
+        gamer.takeCard(deskCard, true);
+        Assertions.assertEquals(gamer.printCards(), "[ <закрытая карта> ]");
+        Assertions.assertEquals(gamer.getSum(), 2);
+        gamer.openLastCards();
+        Assertions.assertEquals(gamer.printCards(), "[ Двойка треф (2) ] => 2");
     }
 
     @Test
@@ -48,9 +48,9 @@ public class GamerTest {
         Gamer gamer = new Gamer();
         Card[] cards = new Card[]{new Card(10, "Десятка треф"), new Card(11, "Туз треф")};
         DeskCard deskCard = new DeskCard(cards);
-        gamer.TakeCard(deskCard, false);
-        gamer.TakeCard(deskCard, false);
-        Assertions.assertEquals(gamer.GetSum(), 21);
+        gamer.takeCard(deskCard, false);
+        gamer.takeCard(deskCard, false);
+        Assertions.assertEquals(gamer.getSum(), 21);
     }
 
     @Test
@@ -58,9 +58,9 @@ public class GamerTest {
         Gamer gamer = new Gamer();
         Card[] cards = new Card[]{new Card(11, "Туз червей"), new Card(11, "Туз треф")};
         DeskCard deskCard = new DeskCard(cards);
-        gamer.TakeCard(deskCard, false);
-        gamer.TakeCard(deskCard, false);
-        Assertions.assertEquals(gamer.GetSum(), 12);
+        gamer.takeCard(deskCard, false);
+        gamer.takeCard(deskCard, false);
+        Assertions.assertEquals(gamer.getSum(), 12);
     }
 
     @Test
@@ -68,8 +68,8 @@ public class GamerTest {
         Gamer gamer = new Gamer();
         Card[] cards = new Card[]{new Card(11, "Туз червей"), new Card(11, "Туз треф")};
         DeskCard deskCard = new DeskCard(cards);
-        gamer.TakeCard(deskCard, false);
-        gamer.TakeCard(deskCard, true);
-        Assertions.assertEquals(gamer.GetSum(), 12);
+        gamer.takeCard(deskCard, false);
+        gamer.takeCard(deskCard, true);
+        Assertions.assertEquals(gamer.getSum(), 12);
     }
 }

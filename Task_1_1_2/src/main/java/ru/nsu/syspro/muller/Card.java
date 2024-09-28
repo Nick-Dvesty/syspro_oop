@@ -1,4 +1,4 @@
-package ru.nsu.syspro.Muller;
+package ru.nsu.syspro.muller;
 
 /**
  * the class of the game card.
@@ -43,14 +43,14 @@ public class Card {
     /**
      * open card.
      */
-    public void Open(){
+    public void open(){
         this.closed = false;
     }
 
     /**
      * close card.
      */
-    public void Close(){
+    public void close(){
         this.closed = true;
     }
 
@@ -59,7 +59,7 @@ public class Card {
      *
      * @return text
      */
-    public String PrintText(){
+    public String printText(){
         if (!closed) {
             return label + " (" + getCost() + ")";
         } else {
@@ -81,7 +81,7 @@ public class Card {
      *
      * @return value closed
      */
-    public boolean IsClosed(){
+    public boolean isClosed(){
         return closed;
     }
 }

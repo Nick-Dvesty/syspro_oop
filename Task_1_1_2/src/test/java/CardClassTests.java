@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.syspro.Muller.Card;
+import ru.nsu.syspro.muller.Card;
 
 
 /**
@@ -11,26 +11,26 @@ public class CardClassTests {
     @Test
     public void defaultOpenTest() {
         Card card = new Card(2, "Двойка треф");
-        card.IsClosed();
-        Assertions.assertFalse(card.IsClosed());
+        card.isClosed();
+        Assertions.assertFalse(card.isClosed());
     }
 
     @Test
     public void closedConstructorTest() {
         Card card = new Card(2, "Двойка треф", true);
-        card.IsClosed();
-        Assertions.assertTrue(card.IsClosed());
+        card.isClosed();
+        Assertions.assertTrue(card.isClosed());
     }
 
     @Test
     public void chainsOpenClosedTest() {
         Card card = new Card(2, "Двойка треф", true);
-        card.IsClosed();
-        Assertions.assertTrue(card.IsClosed());
-        card.Open();
-        Assertions.assertFalse(card.IsClosed());
-        card.Close();
-        Assertions.assertTrue(card.IsClosed());
+        card.isClosed();
+        Assertions.assertTrue(card.isClosed());
+        card.open();
+        Assertions.assertFalse(card.isClosed());
+        card.close();
+        Assertions.assertTrue(card.isClosed());
     }
 
     @Test

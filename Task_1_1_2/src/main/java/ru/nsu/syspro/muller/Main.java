@@ -1,4 +1,4 @@
-package ru.nsu.syspro.Muller;
+package ru.nsu.syspro.muller;
 
 import java.util.Scanner;
 
@@ -26,7 +26,7 @@ public class Main {
         System.out.print("Введите количество раундов в игре: ");
         int countRound = scanner.nextInt();
         Game game = new Game(countDesks,countRound);
-        game.StartGame();
+        game.startGame();
         scanner.close();
     }
 }

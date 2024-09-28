@@ -1,4 +1,4 @@
-package ru.nsu.syspro.Muller;
+package ru.nsu.syspro.muller;
 
 import java.util.ArrayList;
 
@@ -24,17 +24,17 @@ public class Gamer {
      *
      * @return test for print
      */
-    public String PrintCards() {
+    public String printCards() {
         StringBuilder printLine = new StringBuilder();
         boolean HaveClosed = false;
         printLine.append("[ ");
         for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).IsClosed()) HaveClosed = true;
-            printLine.append(cards.get(i).PrintText());
+            if (cards.get(i).isClosed()) HaveClosed = true;
+            printLine.append(cards.get(i).printText());
             if (i != cards.size() - 1) printLine.append(", ");
         }
         printLine.append(" ]");
-        if (!HaveClosed) printLine.append(" => ").append(GetSum());
+        if (!HaveClosed) printLine.append(" => ").append(getSum());
         return printLine.toString();
     }
 
@@ -45,9 +45,9 @@ public class Gamer {
      * @param closed close condition
      * @return added card
      */
-    public Card TakeCard(DeskCard deskCard, boolean closed) {
-        cards.add(deskCard.GetOneCard(closed));
-        int sum = GetSum();
+    public Card takeCard(DeskCard deskCard, boolean closed) {
+        cards.add(deskCard.getOneCard(closed));
+        int sum = getSum();
         if (sum > 21) repairDesk();
         return cards.getLast();
     }
@@ -57,9 +57,9 @@ public class Gamer {
      *
      * @return text last card
      */
-    public String OpenLastCards(){
-            cards.getLast().Open();
-            return cards.getLast().PrintText();
+    public String openLastCards(){
+            cards.getLast().open();
+            return cards.getLast().printText();
     }
 
     /**
@@ -67,7 +67,7 @@ public class Gamer {
      *
      * @return sum cost
      */
-    public int GetSum(){
+    public int getSum(){
         int sum = 0;
         for (Card card : cards) {
             sum += card.getCost();
@@ -76,7 +76,7 @@ public class Gamer {
     }
 
     private void repairDesk() {
-        int sum = GetSum();
+        int sum = getSum();
         if (sum > 21) {
             for (int i = cards.size() - 1; i != 0 && sum > 21; i--) {
                 if (cards.get(i).cost == 11) {
