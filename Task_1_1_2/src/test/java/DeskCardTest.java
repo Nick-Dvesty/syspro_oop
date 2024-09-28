@@ -11,16 +11,16 @@ public class DeskCardTest {
     @Test
     public void constructorTest() {
         DeskCard deskCard = new DeskCard(1);
-        for (int i = 0; i < 52; i++){
+        for (int i = 0; i < 52; i++) {
             Assertions.assertNotNull(deskCard.GetOneCard());
         }
         Assertions.assertNull(deskCard.GetOneCard());
     }
 
     @Test
-    public void testGetCountCard(){
+    public void testGetCountCard() {
         DeskCard deskCard = new DeskCard(1);
-        for (int i = 0; i < 52; i++){
+        for (int i = 0; i < 52; i++) {
             deskCard.GetOneCard();
             Assertions.assertEquals(deskCard.GetCountCards(), 51 - i);
         }
@@ -28,7 +28,7 @@ public class DeskCardTest {
     }
 
     @Test
-    public void testGetOneCard(){
+    public void testGetOneCard() {
         DeskCard deskCard = new DeskCard(1);
         var card = deskCard.GetOneCard();
         Assertions.assertFalse(card.IsClosed());

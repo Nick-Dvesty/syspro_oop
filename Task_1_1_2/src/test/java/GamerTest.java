@@ -14,7 +14,7 @@ public class GamerTest {
         Card[] cards = new Card[]{new Card(2, "Двойка треф")};
         DeskCard deskCard = new DeskCard(cards);
         gamer.TakeCard(deskCard, false);
-        Assertions.assertEquals(gamer.PrintCards(),"[ Двойка треф (2) ] => 2");
+        Assertions.assertEquals(gamer.PrintCards(), "[ Двойка треф (2) ] => 2");
         Assertions.assertEquals(gamer.GetSum(), 2);
     }
 
