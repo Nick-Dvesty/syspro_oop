@@ -12,8 +12,13 @@ public class Number extends Expression {
      * @param value const value
      */
     public Number(String value) {
-        if (value == null || value.length() != 1) {
+        if (value == null || value.isEmpty()) {
             throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < value.length(); i++) {
+            if (value.charAt(i) < '0'|| value.charAt(i) > '9' ) {
+                throw new IllegalArgumentException();
+            }
         }
         this.value = Integer.parseInt(value);
     }
@@ -24,12 +29,12 @@ public class Number extends Expression {
     }
 
     @Override
-    public int substitution(String variables){
+    public double substitution(String variables){
         return value;
     }
 
     @Override
-    public Expression dif() {
+    public Expression dif(String variables) {
         return new Number("0");
     }
 
