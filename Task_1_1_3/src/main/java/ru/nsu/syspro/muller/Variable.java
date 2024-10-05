@@ -8,7 +8,7 @@ public class Variable extends Expression {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < name.length(); i++) {
-            if (!(name.charAt(i) > 'Z' && name.charAt(i) < 'A')
+            if ((name.charAt(i) > 'Z' || name.charAt(i) < 'A')
                 && (name.charAt(i) > 'z' || name.charAt(i) < 'a')){
                 throw new IllegalArgumentException();
             }
@@ -25,7 +25,7 @@ public class Variable extends Expression {
     public double substitution(String variables) {
         int answer = 0;
         if (!variables.contains(name)) throw new IllegalArgumentException();
-        for (int i = variables.indexOf(name) + 4; i < variables.length(); i++) {
+        for (int i = variables.indexOf(name) + name.length() + 3; i < variables.length(); i++) {
             if (variables.charAt(i) == ';') {
                 break;
             }

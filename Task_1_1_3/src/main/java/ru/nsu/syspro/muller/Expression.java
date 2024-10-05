@@ -9,9 +9,6 @@ public abstract class Expression {
         StringBuilder partRight = new StringBuilder();
         int countBrackets = 0;
         ExpOperation oper = null;
-        if (expr.startsWith("(") && expr.endsWith(")")) {
-            expr = expr.substring(1, expr.length() - 1);
-        }
         for (int i = 0; i < expr.length(); i++) {
             if (expr.charAt(i) == '+'  || expr.charAt(i) == '-' || expr.charAt(i) == '*' || expr.charAt(i) == '/') {
                 int prior = expr.charAt(i) == '+' || expr.charAt(i) == '-' ? 0 : 1;
@@ -37,8 +34,12 @@ public abstract class Expression {
                 partRight.append(expr.charAt(i));
             }
         }
-        return oper == null ? switchConstConstruct(partLeft.toString()) :
-            switchOperConstruct(partLeft.toString(), partRight.toString(), oper.operator);
+        if (oper == null){
+            return switchConstConstruct(delBrackets(partLeft.toString()));
+        } else {
+            return switchOperConstruct(delBrackets(partLeft.toString()),
+                delBrackets(partRight.toString()), oper.operator);
+        }
     }
 
     private static class ExpOperation {
@@ -70,6 +71,15 @@ public abstract class Expression {
         }
     }
 
+    private static String delBrackets(String expr){
+        if (expr.charAt(0) == '(' && expr.charAt(expr.length()-1) != ')') {
+            return expr.substring(1);
+        }
+        if (expr.charAt(0) != '(' && expr.charAt(expr.length()-1) == ')') {
+            return expr.substring(0,expr.length()-1);
+        }
+        return expr;
+    }
 
     /**
      * Convert expression in string.

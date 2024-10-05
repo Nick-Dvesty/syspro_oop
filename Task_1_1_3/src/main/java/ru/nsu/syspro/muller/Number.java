@@ -12,15 +12,12 @@ public class Number extends Expression {
      * @param value const value
      */
     public Number(String value) {
-        if (value == null || value.isEmpty()) {
-            throw new IllegalArgumentException();
+        try{
+            this.value = Integer.parseInt(value);
         }
-        for (int i = 0; i < value.length(); i++) {
-            if (value.charAt(i) < '0'|| value.charAt(i) > '9' ) {
-                throw new IllegalArgumentException();
-            }
+        catch (NumberFormatException e) {
+            throw new NumberFormatException(e.getMessage());
         }
-        this.value = Integer.parseInt(value);
     }
 
     @Override
