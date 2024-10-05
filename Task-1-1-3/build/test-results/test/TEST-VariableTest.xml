@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="VariableTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-10-05T15:28:13" hostname="ArchRogStrix" time="0.006">
+  <properties/>
+  <testcase name="testPrint()" classname="VariableTest" time="0.001"/>
+  <testcase name="testEval()" classname="VariableTest" time="0.002"/>
+  <testcase name="TestSimple()" classname="VariableTest" time="0.0"/>
+  <testcase name="TestDerivative()" classname="VariableTest" time="0.001"/>
+  <testcase name="testConstructor()" classname="VariableTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
