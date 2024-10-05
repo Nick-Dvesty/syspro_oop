@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.syspro.muller.Expression;
 import ru.nsu.syspro.muller.Number;
 
 public class NumberTest {
@@ -27,16 +26,16 @@ public class NumberTest {
     }
 
     @Test
-    public void testSubstitution() {
+    public void testEval() {
         Number num = new Number("1");
-        Assertions.assertEquals(1, num.substitution("x = 1"));
-        Assertions.assertEquals(1, num.substitution("x = 3"));
+        Assertions.assertEquals(1, num.eval("x = 1"));
+        Assertions.assertEquals(1, num.eval("x = 3"));
     }
 
     @Test
-    public void testDif() {
+    public void testDerivative() {
         Number num = new Number("1");
-        Assertions.assertEquals(num.dif("x").print(), "0");
+        Assertions.assertEquals(num.derivative("x").print(), "0");
     }
 
     @Test

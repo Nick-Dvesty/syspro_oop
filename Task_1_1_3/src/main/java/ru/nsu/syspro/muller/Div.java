@@ -17,8 +17,8 @@ public class Div extends Operator {
     }
 
     @Override
-    public double substitution(String variables) {
-        var answer = left.substitution(variables) / right.substitution(variables);
+    public double eval(String variables) {
+        var answer = left.eval(variables) / right.eval(variables);
         if (answer == Double.NEGATIVE_INFINITY || answer == Double.POSITIVE_INFINITY
             || Double.isNaN(answer)) {
             throw new ArithmeticException("Division by zero");
@@ -27,9 +27,9 @@ public class Div extends Operator {
     }
 
     @Override
-    public Expression dif(String variables) {
-        var leftDif =  new Mul(left.dif(variables), right);
-        var rightDif = new Mul(left, right.dif(variables));
+    public Expression derivative(String variables) {
+        var leftDif =  new Mul(left.derivative(variables), right);
+        var rightDif = new Mul(left, right.derivative(variables));
         return new Div(new Sub(leftDif, rightDif), new Mul(right, right));
     }
 
@@ -41,7 +41,7 @@ public class Div extends Operator {
             throw new ArithmeticException("Division by zero");
         }
         if (haveComputable(simpleLeft, simpleRight)){
-            return new Number(simpleLeft.substitution("") / simpleRight.substitution(""));
+            return new Number(simpleLeft.eval("") / simpleRight.eval(""));
         }
         if (Objects.equals(left.print(), "0")){
             return new Number("0");

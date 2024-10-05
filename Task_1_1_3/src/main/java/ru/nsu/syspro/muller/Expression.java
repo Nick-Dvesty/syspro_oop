@@ -94,14 +94,14 @@ public abstract class Expression {
      * @param variables string with values variables
      * @return value expression
      */
-    public abstract double substitution (String variables);
+    public abstract double eval(String variables);
 
     /**
      * differentiation expression.
      *
      * @return differentiated expression
      */
-    public abstract Expression dif(String variables);
+    public abstract Expression derivative(String variables);
 
     /**
      * simplify expression.

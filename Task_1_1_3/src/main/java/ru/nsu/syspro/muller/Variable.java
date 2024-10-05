@@ -22,7 +22,7 @@ public class Variable extends Expression {
     }
 
     @Override
-    public double substitution(String variables) {
+    public double eval(String variables) {
         int answer = 0;
         if (!variables.contains(name)) throw new IllegalArgumentException();
         for (int i = variables.indexOf(name) + name.length() + 3; i < variables.length(); i++) {
@@ -39,7 +39,7 @@ public class Variable extends Expression {
     }
 
     @Override
-    public Expression dif(String variables) {
+    public Expression derivative(String variables) {
         return name.equals(variables) ? new Number("1") : new Number("0");
     }
 

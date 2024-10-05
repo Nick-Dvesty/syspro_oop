@@ -17,13 +17,13 @@ public class Sub extends Operator {
     }
 
     @Override
-    public double substitution(String variables) {
-        return left.substitution(variables) - right.substitution(variables);
+    public double eval(String variables) {
+        return left.eval(variables) - right.eval(variables);
     }
 
     @Override
-    public Expression dif(String variables) {
-        return new Sub(left.dif(variables), right.dif(variables));
+    public Expression derivative(String variables) {
+        return new Sub(left.derivative(variables), right.derivative(variables));
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Sub extends Operator {
         var simpleLeft = left.simple();
         var simpleRight = right.simple();
         if (haveComputable(simpleLeft, simpleRight)){
-            return new Number(simpleLeft.substitution("") - simpleRight.substitution(""));
+            return new Number(simpleLeft.eval("") - simpleRight.eval(""));
         }
         if (Objects.equals(simpleLeft.print(), simpleRight.print())){
             return new Number("0");

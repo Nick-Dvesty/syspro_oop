@@ -1,4 +1,3 @@
-import java.util.Objects;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.syspro.muller.Variable;
@@ -36,32 +35,32 @@ public class VariableTest {
     }
 
     @Test
-    void testSubstitution(){
+    void testEval(){
         Variable vr = new Variable("x");
         Variable vr2 = new Variable("y");
         Variable vr3 = new Variable("zov");
-        Assertions.assertEquals(1, vr.substitution("x = 1; y = 2"));
-        Assertions.assertEquals(2, vr2.substitution("x = 1; y = 2"));
-        Assertions.assertEquals(2, vr3.substitution("x = 1; zov = 2"));
+        Assertions.assertEquals(1, vr.eval("x = 1; y = 2"));
+        Assertions.assertEquals(2, vr2.eval("x = 1; y = 2"));
+        Assertions.assertEquals(2, vr3.eval("x = 1; zov = 2"));
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            vr3.substitution("x = 1; y = 2");
+            vr3.eval("x = 1; y = 2");
         });
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            vr3.substitution("zov = 5x; y = 2");
+            vr3.eval("zov = 5x; y = 2");
         });
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            vr3.substitution("zov = 5 ; y = 2");
+            vr3.eval("zov = 5 ; y = 2");
         });
     }
 
     @Test
-    void TestDif(){
+    void TestDerivative(){
         Variable vr = new Variable("x");
         Variable vr2 = new Variable("wow");
-        Assertions.assertEquals("1", vr.dif("x").print());
-        Assertions.assertEquals("0", vr.dif("wow").print());
-        Assertions.assertEquals("1", vr2.dif("wow").print());
-        Assertions.assertEquals("0", vr2.dif("x").print());
+        Assertions.assertEquals("1", vr.derivative("x").print());
+        Assertions.assertEquals("0", vr.derivative("wow").print());
+        Assertions.assertEquals("1", vr2.derivative("wow").print());
+        Assertions.assertEquals("0", vr2.derivative("x").print());
     }
 
     @Test

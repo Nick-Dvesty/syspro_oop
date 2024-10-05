@@ -34,12 +34,12 @@ public class Number extends Expression {
     }
 
     @Override
-    public double substitution(String variables){
+    public double eval(String variables){
         return value;
     }
 
     @Override
-    public Expression dif(String variables) {
+    public Expression derivative(String variables) {
         return new Number("0");
     }
 
