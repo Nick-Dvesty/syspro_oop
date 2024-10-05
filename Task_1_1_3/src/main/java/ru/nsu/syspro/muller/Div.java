@@ -56,7 +56,7 @@ public class Div extends Operator {
         if (Objects.equals(simpleRight.print(), "0")) {
             throw new ArithmeticException("Division by zero");
         }
-        if (IsComputable(simpleLeft, simpleRight)) {
+        if (isComputable(simpleLeft, simpleRight)) {
             return new Number(simpleLeft.eval("") / simpleRight.eval(""));
         }
         if (Objects.equals(left.print(), "0")) {

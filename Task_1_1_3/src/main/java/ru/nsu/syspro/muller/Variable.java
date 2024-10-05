@@ -8,7 +8,8 @@ public class Variable extends Expression {
     private final String name;
 
     /**
-     * default constructor for string
+     * default constructor for string.
+     *
      * @param name name variable
      */
     public Variable(String name) {
@@ -17,7 +18,7 @@ public class Variable extends Expression {
         }
         for (int i = 0; i < name.length(); i++) {
             if ((name.charAt(i) > 'Z' || name.charAt(i) < 'A')
-                && (name.charAt(i) > 'z' || name.charAt(i) < 'a')){
+                && (name.charAt(i) > 'z' || name.charAt(i) < 'a')) {
                 throw new IllegalArgumentException();
             }
         }
@@ -32,7 +33,9 @@ public class Variable extends Expression {
     @Override
     public double eval(String variables) {
         int answer = 0;
-        if (!variables.contains(name)) throw new IllegalArgumentException();
+        if (!variables.contains(name)) {
+            throw new IllegalArgumentException();
+        }
         for (int i = variables.indexOf(name) + name.length() + 3; i < variables.length(); i++) {
             if (variables.charAt(i) == ';') {
                 break;

@@ -1,22 +1,23 @@
 package ru.nsu.syspro.muller;
 
 /**
- * base operator class
+ * base operator class.
  */
 public abstract class Operator extends Expression {
 
     /**
-     * left part expression
+     * left part expression.
      */
     protected Expression left;
 
     /**
-     * right part expression
+     * right part expression.
      */
     protected Expression right;
 
     /**
      * base constructor for all operation.
+     *
      * @param left left part expression format
      * @param right right part expression format
      */
@@ -27,6 +28,7 @@ public abstract class Operator extends Expression {
 
     /**
      * base constructor for all operation.
+     * .
      * @param left left part string format
      * @param right right part string format
      */
@@ -37,11 +39,12 @@ public abstract class Operator extends Expression {
 
     /**
      * checking for computability.
+     *
      * @param exprLeft left part expression
      * @param exprRight right part expression
      * @return computability
      */
-    protected static boolean IsComputable(Expression exprLeft, Expression exprRight) {
+    protected static boolean isComputable(Expression exprLeft, Expression exprRight) {
         return (exprLeft.getClass() == Number.class) && (exprRight.getClass() == Number.class);
     }
 }

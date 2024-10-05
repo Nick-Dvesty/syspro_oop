@@ -47,7 +47,7 @@ public class Mul extends Operator {
     public Expression simple() {
         var simpleLeft = left.simple();
         var simpleRight = right.simple();
-        if (IsComputable(simpleLeft, simpleRight)) {
+        if (isComputable(simpleLeft, simpleRight)) {
             return new Number(simpleLeft.eval("") * simpleRight.eval(""));
         }
         if (Objects.equals(simpleLeft.print(), "0") || Objects.equals(simpleRight.print(), "0")) {

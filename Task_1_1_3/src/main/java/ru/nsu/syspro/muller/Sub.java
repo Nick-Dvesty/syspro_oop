@@ -9,6 +9,7 @@ public class Sub extends Operator {
 
     /**
      *constructor for string format.
+     *
      * @param left the expression of the left side
      * @param right the expression of the right side
      */
@@ -45,7 +46,7 @@ public class Sub extends Operator {
     public Expression simple() {
         var simpleLeft = left.simple();
         var simpleRight = right.simple();
-        if (IsComputable(simpleLeft, simpleRight)) {
+        if (isComputable(simpleLeft, simpleRight)) {
             return new Number(simpleLeft.eval("") - simpleRight.eval(""));
         }
         if (Objects.equals(simpleLeft.print(), simpleRight.print())) {
