@@ -14,6 +14,7 @@ public abstract class Expression {
 
     /**
      * parser from string to expression class format.
+     *
      * @param expr string format expression
      * @return expression format expression
      */
@@ -48,7 +49,7 @@ public abstract class Expression {
                 partRight.append(expr.charAt(i));
             }
         }
-        if (oper == null){
+        if (oper == null) {
             return switchConstConstruct(delBrackets(partLeft.toString()));
         } else {
             return switchOperConstruct(delBrackets(partLeft.toString()),
@@ -57,14 +58,15 @@ public abstract class Expression {
     }
 
     private static class ExpOperation {
+        public char operator;
+        public int prior;
+        public int countBrackets;
+
         public ExpOperation (char operator, int countBrackets, int prior) {
             this.operator = operator;
             this.countBrackets = countBrackets;
             this.prior = prior;
         }
-        public char operator;
-        public int prior;
-        public int countBrackets;
     }
 
     private static Expression switchOperConstruct(String left, String right, char operator) {
@@ -85,12 +87,12 @@ public abstract class Expression {
         }
     }
 
-    private static String delBrackets(String expr){
-        if (expr.charAt(0) == '(' && expr.charAt(expr.length()-1) != ')') {
+    private static String delBrackets(String expr) {
+        if (expr.charAt(0) == '(' && expr.charAt(expr.length() - 1) != ')') {
             return expr.substring(1);
         }
-        if (expr.charAt(0) != '(' && expr.charAt(expr.length()-1) == ')') {
-            return expr.substring(0,expr.length()-1);
+        if (expr.charAt(0) != '(' && expr.charAt(expr.length() - 1) == ')') {
+            return expr.substring(0,expr.length()- 1);
         }
         return expr;
     }
@@ -100,7 +102,7 @@ public abstract class Expression {
      *
      * @return expression string
      */
-    public abstract String print ();
+    public abstract String print ( );
 
     /**
      * return value expression.
@@ -123,5 +125,5 @@ public abstract class Expression {
      *
      * @return simpled expression
      */
-    public abstract Expression simple ();
+    public abstract Expression simple ( );
 }
