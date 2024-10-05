@@ -28,7 +28,7 @@ public abstract class Operator extends Expression {
 
     /**
      * base constructor for all operation.
-     * .
+     *
      * @param left left part string format
      * @param right right part string format
      */

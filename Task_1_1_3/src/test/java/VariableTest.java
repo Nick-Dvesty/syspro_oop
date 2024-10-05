@@ -35,7 +35,7 @@ public class VariableTest {
     }
 
     @Test
-    void testEval(){
+    void testEval() {
         Variable vr = new Variable("x");
         Variable vr2 = new Variable("y");
         Variable vr3 = new Variable("zov");
@@ -54,7 +54,7 @@ public class VariableTest {
     }
 
     @Test
-    void TestDerivative(){
+    void testDerivative() {
         Variable vr = new Variable("x");
         Variable vr2 = new Variable("wow");
         Assertions.assertEquals("1", vr.derivative("x").print());
@@ -64,7 +64,7 @@ public class VariableTest {
     }
 
     @Test
-    void TestSimple(){
+    void testSimple(){
         Variable vr = new Variable("x");
         Assertions.assertEquals("x", vr.simple().print());
     }
