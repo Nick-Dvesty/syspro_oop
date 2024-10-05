@@ -1,6 +1,8 @@
 package ru.nsu.syspro.muller;
 
-public class Mul extends Operators {
+import java.util.Objects;
+
+public class Mul extends Operator {
     public Mul(String left, String right) {
         super(left, right);
     }
@@ -21,11 +23,25 @@ public class Mul extends Operators {
 
     @Override
     public Expression dif(String variables) {
-        return null;
+        return new Add(new Mul(left.dif(variables), right) , new Mul(left, right.dif(variables)));
     }
 
     @Override
     public Expression simple() {
-        return null;
+        var simpleLeft = left.simple();
+        var simpleRight = right.simple();
+        if (haveComputable(simpleLeft, simpleRight)){
+            return new Number(simpleLeft.substitution("") * simpleRight.substitution(""));
+        }
+        if (Objects.equals(simpleLeft.print(), "0") || Objects.equals(simpleRight.print(), "0")){
+            return new Number("0");
+        }
+        if (Objects.equals(left.print(), "1")){
+            return simpleRight;
+        }
+        if (Objects.equals(right.print(), "1")){
+            return simpleLeft;
+        }
+        return new Mul(simpleLeft, simpleRight);
     }
 }

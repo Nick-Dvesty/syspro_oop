@@ -6,6 +6,14 @@ package ru.nsu.syspro.muller;
 public class Number extends Expression {
     private final int value;
 
+    public Number(int value) {
+        this.value = value;
+    }
+
+    public Number(double value) {
+        this.value = (int)value;
+    }
+
     /**
      * default constructor with const.
      *
@@ -37,7 +45,7 @@ public class Number extends Expression {
 
     @Override
     public Expression simple() {
-        return new Number(String.valueOf(value));
+        return new Number(value);
     }
 
 }

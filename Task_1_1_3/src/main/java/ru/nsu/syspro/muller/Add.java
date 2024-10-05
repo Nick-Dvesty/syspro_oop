@@ -1,6 +1,6 @@
 package ru.nsu.syspro.muller;
 
-public class Add extends Operators {
+public class Add extends Operator {
     public Add(String left, String right) {
         super(left, right);
     }
@@ -26,6 +26,11 @@ public class Add extends Operators {
 
     @Override
     public Expression simple() {
-        return null;
+        var simpleLeft = left.simple();
+        var simpleRight = right.simple();
+        if (haveComputable(simpleLeft, simpleRight)){
+            return new Number(simpleLeft.substitution("") + simpleRight.substitution(""));
+        }
+        return new Add(simpleLeft, simpleRight);
     }
 }

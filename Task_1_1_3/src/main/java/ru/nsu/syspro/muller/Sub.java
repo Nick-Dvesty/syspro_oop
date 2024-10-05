@@ -1,6 +1,8 @@
 package ru.nsu.syspro.muller;
 
-public class Sub extends Operators {
+import java.util.Objects;
+
+public class Sub extends Operator {
     public Sub(String left, String right) {
         super(left, right);
     }
@@ -21,11 +23,19 @@ public class Sub extends Operators {
 
     @Override
     public Expression dif(String variables) {
-        return null;
+        return new Sub(left.dif(variables), right.dif(variables));
     }
 
     @Override
     public Expression simple() {
-        return null;
+        var simpleLeft = left.simple();
+        var simpleRight = right.simple();
+        if (haveComputable(simpleLeft, simpleRight)){
+            return new Number(simpleLeft.substitution("") - simpleRight.substitution(""));
+        }
+        if (Objects.equals(simpleLeft.print(), simpleRight.print())){
+            return new Number("0");
+        }
+        return new Sub(simpleLeft, simpleRight);
     }
 }

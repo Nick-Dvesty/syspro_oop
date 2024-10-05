@@ -1,6 +1,8 @@
 package ru.nsu.syspro.muller;
 
-public class Div extends Operators {
+import java.util.Objects;
+
+public class Div extends Operator {
     public Div(String left, String right) {
         super(left, right);
     }
@@ -16,16 +18,37 @@ public class Div extends Operators {
 
     @Override
     public double substitution(String variables) {
-        return left.substitution(variables) / right.substitution(variables);
+        var answer = left.substitution(variables) / right.substitution(variables);
+        if (answer == Double.NEGATIVE_INFINITY || answer == Double.POSITIVE_INFINITY
+            || Double.isNaN(answer)) {
+            throw new ArithmeticException("Division by zero");
+        }
+        return answer;
     }
 
     @Override
     public Expression dif(String variables) {
-        return null;
+        var leftDif =  new Mul(left.dif(variables), right);
+        var rightDif = new Mul(left, right.dif(variables));
+        return new Div(new Sub(leftDif, rightDif), new Mul(right, right));
     }
 
     @Override
     public Expression simple() {
-        return null;
+        var simpleLeft = left.simple();
+        var simpleRight = right.simple();
+        if (Objects.equals(simpleRight.print(), "0")) {
+            throw new ArithmeticException("Division by zero");
+        }
+        if (haveComputable(simpleLeft, simpleRight)){
+            return new Number(simpleLeft.substitution("") / simpleRight.substitution(""));
+        }
+        if (Objects.equals(left.print(), "0")){
+            return new Number("0");
+        }
+        if (Objects.equals(right.print(), "1")){
+            return simpleLeft;
+        }
+        return new Div(simpleLeft, simpleRight);
     }
 }
