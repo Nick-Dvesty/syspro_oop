@@ -10,7 +10,7 @@ import ru.nsu.syspro.muller.Variable;
 
 public class TestConverter {
     @Test
-    public void testConvert() {
+    void testConvert() {
         var test = Expression.convertor("(12+1)");
         Assertions.assertEquals("(12+1)", test.print());
         test = Expression.convertor("(12-1)");
@@ -27,7 +27,7 @@ public class TestConverter {
     }
 
     @Test
-    public void testConstract() {
+    void testConstract() {
         var vr = new Add(new Number("4"), new Variable("y"));
         var vr2 = new Sub(new Variable("x"), new Number("2"));
         var vr3 = new Mul(new Number("9"), new Variable("y"));
@@ -40,7 +40,7 @@ public class TestConverter {
     }
 
     @Test
-    public void testSubstitution() {
+    void testSubstitution() {
         var vr = Expression.convertor("2+5*x");
         Assertions.assertEquals(12, vr.eval("x = 2"));
         vr = Expression.convertor("40-3*x+5*y");
