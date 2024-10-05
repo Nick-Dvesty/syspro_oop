@@ -1,8 +1,22 @@
 package ru.nsu.syspro.muller;
 
-
+/**
+ * base class for all expression.
+ */
 public abstract class Expression {
 
+    /**
+     * javadoc error constructor
+     */
+    public Expression() {
+
+    }
+
+    /**
+     * parser from string to expression class format.
+     * @param expr string format expression
+     * @return expression format expression
+     */
     public static Expression convertor(String expr) {
         boolean part = false;
         StringBuilder partLeft = new StringBuilder();
@@ -99,6 +113,7 @@ public abstract class Expression {
     /**
      * differentiation expression.
      *
+     * @param variables string with variables and ins values
      * @return differentiated expression
      */
     public abstract Expression derivative(String variables);

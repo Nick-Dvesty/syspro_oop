@@ -3,6 +3,10 @@ package ru.nsu.syspro.muller;
 public class Variable extends Expression {
     private final String name;
 
+    /**
+     * default constructor for string
+     * @param name name variable
+     */
     public Variable(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();

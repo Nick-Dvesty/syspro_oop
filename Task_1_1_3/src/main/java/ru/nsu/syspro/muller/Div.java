@@ -2,11 +2,25 @@ package ru.nsu.syspro.muller;
 
 import java.util.Objects;
 
+/**
+ * class division operation.
+ */
 public class Div extends Operator {
+
+    /**
+     *constructor for string format.
+     * @param left the expression of the left side
+     * @param right the expression of the right side
+     */
     public Div(String left, String right) {
         super(left, right);
     }
 
+    /**
+     *constructor for expression format.
+     * @param left the expression of the left side
+     * @param right the expression of the right side
+     */
     public Div(Expression left, Expression right) {
         super(left, right);
     }
@@ -40,7 +54,7 @@ public class Div extends Operator {
         if (Objects.equals(simpleRight.print(), "0")) {
             throw new ArithmeticException("Division by zero");
         }
-        if (haveComputable(simpleLeft, simpleRight)){
+        if (IsComputable(simpleLeft, simpleRight)){
             return new Number(simpleLeft.eval("") / simpleRight.eval(""));
         }
         if (Objects.equals(left.print(), "0")){

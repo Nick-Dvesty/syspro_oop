@@ -6,10 +6,18 @@ package ru.nsu.syspro.muller;
 public class Number extends Expression {
     private final int value;
 
+    /**
+     * default constructor for int.
+     * @param value value const
+     */
     public Number(int value) {
         this.value = value;
     }
 
+    /**
+     * default constructor for double.
+     * @param value value const
+     */
     public Number(double value) {
         this.value = (int)value;
     }

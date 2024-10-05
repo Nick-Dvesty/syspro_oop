@@ -1,10 +1,24 @@
 package ru.nsu.syspro.muller;
 
+/**
+ * class addition operation.
+ */
 public class Add extends Operator {
+
+    /**
+     *constructor for string format.
+     * @param left the expression of the left side
+     * @param right the expression of the right side
+     */
     public Add(String left, String right) {
         super(left, right);
     }
 
+    /**
+     *constructor for expression format.
+     * @param left the expression of the left side
+     * @param right the expression of the right side
+     */
     public Add(Expression left, Expression right) {
         super(left, right);
     }
@@ -28,7 +42,7 @@ public class Add extends Operator {
     public Expression simple() {
         var simpleLeft = left.simple();
         var simpleRight = right.simple();
-        if (haveComputable(simpleLeft, simpleRight)){
+        if (IsComputable(simpleLeft, simpleRight)){
             return new Number(simpleLeft.eval("") + simpleRight.eval(""));
         }
         return new Add(simpleLeft, simpleRight);
