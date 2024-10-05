@@ -8,6 +8,7 @@ public class Number extends Expression {
 
     /**
      * default constructor for int.
+     *
      * @param value value const
      */
     public Number(int value) {
@@ -16,6 +17,7 @@ public class Number extends Expression {
 
     /**
      * default constructor for double.
+     *
      * @param value value const
      */
     public Number(double value) {
@@ -28,10 +30,10 @@ public class Number extends Expression {
      * @param value const value
      */
     public Number(String value) {
-        try{
+
+        try {
             this.value = Integer.parseInt(value);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new NumberFormatException(e.getMessage());
         }
     }
@@ -42,7 +44,7 @@ public class Number extends Expression {
     }
 
     @Override
-    public double eval(String variables){
+    public double eval(String variables) {
         return value;
     }
 

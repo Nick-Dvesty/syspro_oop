@@ -25,11 +25,11 @@ public abstract class Expression {
         int countBrackets = 0;
         ExpOperation oper = null;
         for (int i = 0; i < expr.length(); i++) {
-            if (expr.charAt(i) == '+'  || expr.charAt(i) == '-' ||
-                expr.charAt(i) == '*' || expr.charAt(i) == '/') {
+            if (expr.charAt(i) == '+'  || expr.charAt(i) == '-'
+                || expr.charAt(i) == '*' || expr.charAt(i) == '/') {
                 int prior = expr.charAt(i) == '+' || expr.charAt(i) == '-' ? 0 : 1;
-                if (oper == null || countBrackets < oper.countBrackets ||
-                    (countBrackets == oper.countBrackets && prior <= oper.prior)) {
+                if (oper == null || countBrackets < oper.countBrackets
+                    || (countBrackets == oper.countBrackets && prior <= oper.prior)) {
                     if (oper != null) {
                         partLeft.append(oper.operator).append(partRight);
                         partRight = new StringBuilder();
@@ -94,7 +94,7 @@ public abstract class Expression {
             return expr.substring(1);
         }
         if (expr.charAt(0) != '(' && expr.charAt(expr.length() - 1) == ')') {
-            return expr.substring(0,expr.length() - 1);
+            return expr.substring(0, expr.length() - 1);
         }
         return expr;
     }
