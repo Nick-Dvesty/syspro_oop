@@ -89,8 +89,8 @@ public class TestConverter {
         vr = Expression.convertor("(23*x)-(23*x)");
         Assertions.assertEquals(vr.simple().print(), "0");
         vr = Expression.convertor( "x+y");
-        Assertions.assertEquals(vr.derivative("x").simple().print(), "1" );
-        Assertions.assertEquals(vr.derivative("z").simple().print(), "0" );
+        Assertions.assertEquals(vr.derivative("x").simple().print(), "1");
+        Assertions.assertEquals(vr.derivative("z").simple().print(), "0");
         vr = Expression.convertor("xi+1");
         Assertions.assertEquals(vr.derivative("xi").simple().print(), "1");
         vr = Expression.convertor("xi*32");
