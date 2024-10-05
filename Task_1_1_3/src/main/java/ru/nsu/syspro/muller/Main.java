@@ -6,7 +6,7 @@ package ru.nsu.syspro.muller;
 public class Main {
 
     /**
-     * javadoc error constructor
+     * javadoc error constructor.
      */
     Main(){
 
@@ -14,6 +14,7 @@ public class Main {
 
     /**
      * main void.
+     * 
      * @param args arguments commands line
      */
     public static void main(String[] args) {

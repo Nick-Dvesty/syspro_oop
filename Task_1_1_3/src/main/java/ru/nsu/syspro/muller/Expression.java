@@ -6,7 +6,7 @@ package ru.nsu.syspro.muller;
 public abstract class Expression {
 
     /**
-     * javadoc error constructor
+     * javadoc error constructor.
      */
     public Expression() {
 
@@ -25,9 +25,11 @@ public abstract class Expression {
         int countBrackets = 0;
         ExpOperation oper = null;
         for (int i = 0; i < expr.length(); i++) {
-            if (expr.charAt(i) == '+'  || expr.charAt(i) == '-' || expr.charAt(i) == '*' || expr.charAt(i) == '/') {
+            if (expr.charAt(i) == '+'  || expr.charAt(i) == '-' ||
+                expr.charAt(i) == '*' || expr.charAt(i) == '/') {
                 int prior = expr.charAt(i) == '+' || expr.charAt(i) == '-' ? 0 : 1;
-                if (oper == null || countBrackets < oper.countBrackets || (countBrackets == oper.countBrackets && prior <= oper.prior)) {
+                if (oper == null || countBrackets < oper.countBrackets ||
+                    (countBrackets == oper.countBrackets && prior <= oper.prior)) {
                     if (oper != null) {
                         partLeft.append(oper.operator).append(partRight);
                         partRight = new StringBuilder();
@@ -62,7 +64,7 @@ public abstract class Expression {
         public int prior;
         public int countBrackets;
 
-        public ExpOperation (char operator, int countBrackets, int prior) {
+        public ExpOperation(char operator, int countBrackets, int prior) {
             this.operator = operator;
             this.countBrackets = countBrackets;
             this.prior = prior;
@@ -92,7 +94,7 @@ public abstract class Expression {
             return expr.substring(1);
         }
         if (expr.charAt(0) != '(' && expr.charAt(expr.length() - 1) == ')') {
-            return expr.substring(0,expr.length()- 1);
+            return expr.substring(0,expr.length() - 1);
         }
         return expr;
     }
@@ -102,7 +104,7 @@ public abstract class Expression {
      *
      * @return expression string
      */
-    public abstract String print ( );
+    public abstract String print();
 
     /**
      * return value expression.
@@ -125,5 +127,5 @@ public abstract class Expression {
      *
      * @return simpled expression
      */
-    public abstract Expression simple ( );
+    public abstract Expression simple();
 }
