@@ -55,11 +55,11 @@ public class TestConverter {
             var vr2 = Expression.convertor("(40+3*x)+(5+y)/0");
             vr2.eval("x = 2; y = 4");
         });
-            Assertions.assertThrows(ArithmeticException.class, () -> {
+        Assertions.assertThrows(ArithmeticException.class, () -> {
             var vr2 = Expression.convertor("0/0");;
             vr2.eval("x = 2; y = 4");
         });
-            Assertions.assertThrows(ArithmeticException.class, () -> {
+        Assertions.assertThrows(ArithmeticException.class, () -> {
             var vr2 = Expression.convertor("(5-10)/0");;
             vr2.eval("x = 2; y = 4");
         });

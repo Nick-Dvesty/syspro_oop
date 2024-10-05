@@ -5,25 +5,25 @@ import ru.nsu.syspro.muller.Variable;
 public class VariableTest {
     @Test
     public void testConstructor() {
-    Variable vr = new Variable("x");
-    Variable vr2 = new Variable("fal");
-    Variable vr3 = new Variable("g");
-    Variable vr4 = new Variable("HAD");
-    Assertions.assertThrows(IllegalArgumentException.class, () -> {
-        new Variable("{");
-    });
-    Assertions.assertThrows(IllegalArgumentException.class, () -> {
-        new Variable("");
-    });
-    Assertions.assertThrows(IllegalArgumentException.class, () -> {
-        new Variable(null);
-    });
-    Assertions.assertThrows(IllegalArgumentException.class, () -> {
-        new Variable("4*3");
-    });
-    Assertions.assertThrows(IllegalArgumentException.class, () -> {
-        new Variable("4");
-    });
+        Variable vr = new Variable("x");
+        Variable vr2 = new Variable("fal");
+        Variable vr3 = new Variable("g");
+        Variable vr4 = new Variable("HAD");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Variable("{");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Variable("");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Variable(null);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Variable("4*3");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new Variable("4");
+        });
     }
 
     @Test
