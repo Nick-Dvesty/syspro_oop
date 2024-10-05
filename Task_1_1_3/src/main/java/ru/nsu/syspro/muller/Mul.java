@@ -9,6 +9,7 @@ public class Mul extends Operator {
 
     /**
      *constructor for string format.
+     *
      * @param left the expression of the left side
      * @param right the expression of the right side
      */
@@ -18,6 +19,7 @@ public class Mul extends Operator {
 
     /**
      *constructor for expression format.
+     *
      * @param left the expression of the left side
      * @param right the expression of the right side
      */
@@ -37,23 +39,24 @@ public class Mul extends Operator {
 
     @Override
     public Expression derivative(String variables) {
-        return new Add(new Mul(left.derivative(variables), right) , new Mul(left, right.derivative(variables)));
+        return new Add(new Mul(left.derivative(variables), right),
+            new Mul(left, right.derivative(variables)));
     }
 
     @Override
     public Expression simple() {
         var simpleLeft = left.simple();
         var simpleRight = right.simple();
-        if (IsComputable(simpleLeft, simpleRight)){
+        if (IsComputable(simpleLeft, simpleRight)) {
             return new Number(simpleLeft.eval("") * simpleRight.eval(""));
         }
-        if (Objects.equals(simpleLeft.print(), "0") || Objects.equals(simpleRight.print(), "0")){
+        if (Objects.equals(simpleLeft.print(), "0") || Objects.equals(simpleRight.print(), "0")) {
             return new Number("0");
         }
-        if (Objects.equals(left.print(), "1")){
+        if (Objects.equals(left.print(), "1")) {
             return simpleRight;
         }
-        if (Objects.equals(right.print(), "1")){
+        if (Objects.equals(right.print(), "1")) {
             return simpleLeft;
         }
         return new Mul(simpleLeft, simpleRight);

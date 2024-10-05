@@ -21,7 +21,7 @@ public class Number extends Expression {
      * @param value value const
      */
     public Number(double value) {
-        this.value = (int)value;
+        this.value = (int) value;
     }
 
     /**

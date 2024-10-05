@@ -9,6 +9,7 @@ public class Div extends Operator {
 
     /**
      *constructor for string format.
+     *
      * @param left the expression of the left side
      * @param right the expression of the right side
      */
@@ -18,6 +19,7 @@ public class Div extends Operator {
 
     /**
      *constructor for expression format.
+     *
      * @param left the expression of the left side
      * @param right the expression of the right side
      */
@@ -54,13 +56,13 @@ public class Div extends Operator {
         if (Objects.equals(simpleRight.print(), "0")) {
             throw new ArithmeticException("Division by zero");
         }
-        if (IsComputable(simpleLeft, simpleRight)){
+        if (IsComputable(simpleLeft, simpleRight)) {
             return new Number(simpleLeft.eval("") / simpleRight.eval(""));
         }
-        if (Objects.equals(left.print(), "0")){
+        if (Objects.equals(left.print(), "0")) {
             return new Number("0");
         }
-        if (Objects.equals(right.print(), "1")){
+        if (Objects.equals(right.print(), "1")) {
             return simpleLeft;
         }
         return new Div(simpleLeft, simpleRight);
