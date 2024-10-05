@@ -68,13 +68,13 @@ public abstract class Expression {
     }
 
     private static Expression switchOperConstruct(String left, String right, char operator) {
-        return switch (operator) {
-            case '+' -> new Add(left, right);
-            case '-' -> new Sub(left, right);
-            case '*' -> new Mul(left, right);
-            case '/' -> new Div(left, right);
-            default -> throw new IllegalArgumentException("Unsupported operator: " + operator);
-        };
+        switch (operator) {
+            case '+': return new Add(left, right);
+            case '-': return new Sub(left, right);
+            case '*': return new Mul(left, right);
+            case '/': return new Div(left, right);
+            default:  throw new IllegalArgumentException("Unsupported operator: " + operator);
+        }
     }
 
     private static Expression switchConstConstruct(String value) {
