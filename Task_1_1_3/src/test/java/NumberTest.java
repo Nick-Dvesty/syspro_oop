@@ -4,7 +4,7 @@ import ru.nsu.syspro.muller.Number;
 
 public class NumberTest {
 
-    @Test void testConstructor(){
+    @Test void testConstructor() {
         new Number("1");
         new Number("12");
         new Number("121212");

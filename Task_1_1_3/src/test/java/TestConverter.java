@@ -27,7 +27,7 @@ public class TestConverter {
     }
 
     @Test
-    public void testConstract(){
+    public void testConstract() {
         var vr = new Add(new Number("4"), new Variable("y"));
         var vr2 = new Sub(new Variable("x"), new Number("2"));
         var vr3 = new Mul(new Number("9"), new Variable("y"));
@@ -40,7 +40,7 @@ public class TestConverter {
     }
 
     @Test
-    public void testSubstitution(){
+    public void testSubstitution() {
         var vr = Expression.convertor("2+5*x");
         Assertions.assertEquals(12, vr.eval("x = 2"));
         vr = Expression.convertor("40-3*x+5*y");
@@ -65,7 +65,7 @@ public class TestConverter {
         });
     }
 
-    @Test void testDifferentiation(){
+    @Test void testDifferentiation() {
         Expression vr = new Add(new Number("4"), new Variable("y"));
         Assertions.assertEquals(vr.derivative("y").print(), "(0+1)" );
         vr = new Add(new Variable("x"), new Variable("y"));
@@ -79,7 +79,7 @@ public class TestConverter {
         Assertions.assertEquals(vr.derivative("xi").print(), "(((1*32)-(xi*0))/(32*32))");
     }
 
-    @Test void testSimple(){
+    @Test void testSimple() {
         Expression vr = Expression.convertor("4+y");
         Assertions.assertEquals(vr.simple().print(), "(4+y)" );
         Assertions.assertEquals(vr.derivative("y").simple().print(), "1" );
