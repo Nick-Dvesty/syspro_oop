@@ -67,12 +67,12 @@ public class TestConverter {
 
     @Test void testDifferentiation() {
         Expression vr = new Add(new Number("4"), new Variable("y"));
-        Assertions.assertEquals(vr.derivative("y").print(), "(0+1)" );
+        Assertions.assertEquals(vr.derivative("y").print(), "(0+1)");
         vr = new Add(new Variable("x"), new Variable("y"));
-        Assertions.assertEquals(vr.derivative("x").print(), "(1+0)" );
-        Assertions.assertEquals(vr.derivative("z").print(), "(0+0)" );
+        Assertions.assertEquals(vr.derivative("x").print(), "(1+0)");
+        Assertions.assertEquals(vr.derivative("z").print(), "(0+0)");
         vr = new Sub(new Variable("xi"), new Number("1"));
-        Assertions.assertEquals(vr.derivative("xi").print(), "(1-0)" );
+        Assertions.assertEquals(vr.derivative("xi").print(), "(1-0)");
         vr = new Mul(new Variable("xi"), new Number("32"));
         Assertions.assertEquals(vr.derivative("xi").print(), "((1*32)+(xi*0))");
         vr = new Div(new Variable("xi"), new Number("32"));
@@ -81,32 +81,32 @@ public class TestConverter {
 
     @Test void testSimple() {
         Expression vr = Expression.convertor("4+y");
-        Assertions.assertEquals(vr.simple().print(), "(4+y)" );
-        Assertions.assertEquals(vr.derivative("y").simple().print(), "1" );
+        Assertions.assertEquals(vr.simple().print(), "(4+y)");
+        Assertions.assertEquals(vr.derivative("y").simple().print(), "1");
         vr = Expression.convertor("4-y");
-        Assertions.assertEquals(vr.simple().print(), "(4-y)" );
-        Assertions.assertEquals(vr.simple().derivative("y").print(), "(0-1)" );
+        Assertions.assertEquals(vr.simple().print(), "(4-y)");
+        Assertions.assertEquals(vr.simple().derivative("y").print(), "(0-1)");
         vr = Expression.convertor("(23*x)-(23*x)");
-        Assertions.assertEquals(vr.simple().print(), "0" );
+        Assertions.assertEquals(vr.simple().print(), "0");
         vr = Expression.convertor( "x+y");
         Assertions.assertEquals(vr.derivative("x").simple().print(), "1" );
         Assertions.assertEquals(vr.derivative("z").simple().print(), "0" );
         vr = Expression.convertor("xi+1");
-        Assertions.assertEquals(vr.derivative("xi").simple().print(), "1" );
+        Assertions.assertEquals(vr.derivative("xi").simple().print(), "1");
         vr = Expression.convertor("xi*32");
         Assertions.assertEquals(vr.derivative("xi").simple().print(), "32");
         vr = Expression.convertor("xi/32");
         Assertions.assertEquals(vr.derivative("xi").simple().print(), "0");
         vr = Expression.convertor("1*(xi*1)");
-        Assertions.assertEquals(vr.simple().print(), "xi" );
+        Assertions.assertEquals(vr.simple().print(), "xi");
         vr = Expression.convertor("(0*1)+(xi*0)");
         Assertions.assertEquals(vr.simple().print(), "0");
         vr = Expression.convertor("0/(12*x)");
-        Assertions.assertEquals(vr.simple().print(), "0" );
+        Assertions.assertEquals(vr.simple().print(), "0");
         vr = Expression.convertor("23+x/1");
-        Assertions.assertEquals(vr.simple().print(), "(23+x)" );
+        Assertions.assertEquals(vr.simple().print(), "(23+x)");
         vr = Expression.convertor("23+x/32");
-        Assertions.assertEquals(vr.simple().print(), "(23+(x/32))" );
+        Assertions.assertEquals(vr.simple().print(), "(23+(x/32))");
     }
 }
 

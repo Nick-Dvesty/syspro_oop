@@ -64,7 +64,7 @@ public class VariableTest {
     }
 
     @Test
-    void testSimple(){
+    void testSimple() {
         Variable vr = new Variable("x");
         Assertions.assertEquals("x", vr.simple().print());
     }
