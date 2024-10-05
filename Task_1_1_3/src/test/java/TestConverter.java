@@ -52,16 +52,16 @@ public class TestConverter {
         vr = Expression.convertor("(40+3*x)+(5+y)/2");
         Assertions.assertEquals(50.5d, vr.eval("x = 2; y = 4"));
         Assertions.assertThrows(ArithmeticException.class, () -> {
-        var vr2 = Expression.convertor("(40+3*x)+(5+y)/0");
-        vr2.eval("x = 2; y = 4");
+            var vr2 = Expression.convertor("(40+3*x)+(5+y)/0");
+            vr2.eval("x = 2; y = 4");
         });
-        Assertions.assertThrows(ArithmeticException.class, () -> {
-        var vr2 = Expression.convertor("0/0");;
-        vr2.eval("x = 2; y = 4");
+            Assertions.assertThrows(ArithmeticException.class, () -> {
+            var vr2 = Expression.convertor("0/0");;
+            vr2.eval("x = 2; y = 4");
         });
-        Assertions.assertThrows(ArithmeticException.class, () -> {
-        var vr2 = Expression.convertor("(5-10)/0");;
-        vr2.eval("x = 2; y = 4");
+            Assertions.assertThrows(ArithmeticException.class, () -> {
+            var vr2 = Expression.convertor("(5-10)/0");;
+            vr2.eval("x = 2; y = 4");
         });
     }
 
@@ -88,7 +88,7 @@ public class TestConverter {
         Assertions.assertEquals(vr.simple().derivative("y").print(), "(0-1)");
         vr = Expression.convertor("(23*x)-(23*x)");
         Assertions.assertEquals(vr.simple().print(), "0");
-        vr = Expression.convertor( "x+y");
+        vr = Expression.convertor("x+y");
         Assertions.assertEquals(vr.derivative("x").simple().print(), "1");
         Assertions.assertEquals(vr.derivative("z").simple().print(), "0");
         vr = Expression.convertor("xi+1");
