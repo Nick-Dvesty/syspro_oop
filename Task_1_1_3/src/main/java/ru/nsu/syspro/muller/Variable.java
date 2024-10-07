@@ -1,6 +1,8 @@
 package ru.nsu.syspro.muller;
 
 
+import java.util.Objects;
+
 /**
  * class variables.
  */
@@ -14,12 +16,12 @@ public class Variable extends Expression {
      */
     public Variable(String name) {
         if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Empty variable name is set");
         }
         for (int i = 0; i < name.length(); i++) {
             if ((name.charAt(i) > 'Z' || name.charAt(i) < 'A')
                 && (name.charAt(i) > 'z' || name.charAt(i) < 'a')) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("The variable name contains invalid characters");
             }
         }
         this.name = name;
@@ -32,21 +34,17 @@ public class Variable extends Expression {
 
     @Override
     public double eval(String variables) {
-        int answer = 0;
-        if (!variables.contains(name)) {
-            throw new IllegalArgumentException();
-        }
-        for (int i = variables.indexOf(name) + name.length() + 3; i < variables.length(); i++) {
-            if (variables.charAt(i) == ';') {
-                break;
+        String[] parts = variables.split(";");
+        try {
+            for (String part : parts) {
+                String[] partParts = part.split(" ");
+                int i = Objects.equals(partParts[0], "") ? 1:0;
+                if (Objects.equals(name, partParts[i])) return Double.parseDouble(partParts[2 + i]);
             }
-            if (variables.charAt(i) >= '0' && variables.charAt(i) <= '9') {
-                answer = (answer * 10 + (variables.charAt(i) - '0'));
-                continue;
-            }
-            throw new IllegalArgumentException();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Incorrectly set signification");
         }
-        return answer;
+        throw new IllegalArgumentException("Variable " + name + " not found");
     }
 
     @Override

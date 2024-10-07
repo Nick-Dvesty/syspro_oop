@@ -48,9 +48,6 @@ public class VariableTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             vr3.eval("zov = 5x; y = 2");
         });
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            vr3.eval("zov = 5 ; y = 2");
-        });
     }
 
     @Test
