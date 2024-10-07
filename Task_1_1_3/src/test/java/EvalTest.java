@@ -9,6 +9,7 @@ import ru.nsu.syspro.muller.Sub;
 import ru.nsu.syspro.muller.Variable;
 
 public class EvalTest {
+    
     @Test
     void testEval() {
         Expression vr = new Add(new Number(2), new Mul(new Number(5),

@@ -9,6 +9,7 @@ import ru.nsu.syspro.muller.Sub;
 import ru.nsu.syspro.muller.Variable;
 
 public class DerivativeTest {
+
     @Test
     void testDifferentiation() {
         Expression vr = new Add(new ru.nsu.syspro.muller.Number("4"), new Variable("y"));
