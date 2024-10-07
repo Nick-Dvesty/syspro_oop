@@ -9,6 +9,7 @@ import ru.nsu.syspro.muller.Sub;
 import ru.nsu.syspro.muller.Variable;
 
 public class SimpleTest {
+
     @Test
     void testSimple() {
         Expression vr = Expression.convertor("4+y");
@@ -19,7 +20,7 @@ public class SimpleTest {
         vr = new Sub(new Number(4), new Variable("y"));
         Assertions.assertEquals(vr.simple().print(), "(4-y)");
         vr =  new Sub(new Mul(new Number(23), new Variable("x")),
-            new Mul(new Number(23), new Variable("x")));
+        new Mul(new Number(23), new Variable("x")));
         Assertions.assertEquals(vr.simple().print(), "0");
         vr = new Add(new Number(1), new Number(0));
         Assertions.assertEquals(vr.simple().print(), "1");
@@ -28,11 +29,11 @@ public class SimpleTest {
         vr = new Add(new Number(1), new Number(0));
         Assertions.assertEquals(vr.simple().print(), "1");
         vr = new Add(new Mul(new Number(1), new Number(32)),
-            new Mul(new Number(0), new Variable("xi")));
+        new Mul(new Number(0), new Variable("xi")));
         Assertions.assertEquals(vr.simple().print(), "32");
         vr = new Div(new Sub(new Mul(new Number(1), new Number(32)),
-            new Mul(new Number(0), new Variable("xi"))), new Mul(new Number(32),
-            new Number(32)));
+        new Mul(new Number(0), new Variable("xi"))), new Mul(new Number(32),
+        new Number(32)));
         Assertions.assertEquals(vr.simple().print(), "0");
         vr = new Mul(new Number(1), new Mul(new Variable("xi"), new Number(1)));
         Assertions.assertEquals(vr.simple().print(), "xi");

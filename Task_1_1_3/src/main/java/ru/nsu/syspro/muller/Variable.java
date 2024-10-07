@@ -38,8 +38,10 @@ public class Variable extends Expression {
         try {
             for (String part : parts) {
                 String[] partParts = part.split(" ");
-                int i = Objects.equals(partParts[0], "") ? 1:0;
-                if (Objects.equals(name, partParts[i])) return Double.parseDouble(partParts[2 + i]);
+                int i = Objects.equals(partParts[0], "") ? 1 :0;
+                if (Objects.equals(name, partParts[i])) {
+                    return Double.parseDouble(partParts[2 + i]);
+                }
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Incorrectly set signification");
