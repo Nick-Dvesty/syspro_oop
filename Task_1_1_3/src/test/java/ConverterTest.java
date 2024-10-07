@@ -9,7 +9,7 @@ import ru.nsu.syspro.muller.Sub;
 import ru.nsu.syspro.muller.Variable;
 
 /**
- * convertor method Test.
+ * convertor method  Test.
  */
 public class ConverterTest {
     @Test

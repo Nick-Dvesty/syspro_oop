@@ -15,8 +15,7 @@ public class SimpleTest {
 
     @Test
     void testSimple() {
-        Expression vr = Expression.convertor("4+y");
-        vr = new Add(new Number(4), new Variable("y"));
+         Expression vr = new Add(new Number(4), new Variable("y"));
         Assertions.assertEquals(vr.simple().print(), "(4+y)");
         vr = new Add(new Number(0), new Number(1));
         Assertions.assertEquals(vr.simple().print(), "1");

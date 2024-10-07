@@ -21,7 +21,7 @@ public class Variable extends Expression {
         for (int i = 0; i < name.length(); i++) {
             if ((name.charAt(i) > 'Z' || name.charAt(i) < 'A')
                 && (name.charAt(i) > 'z' || name.charAt(i) < 'a')) {
-                throw new IllegalArgumentException("The variable name contains invalid characters");
+                throw new IllegalArgumentException("The variable" + name + "contains invalid characters");
             }
         }
         this.name = name;
@@ -37,10 +37,10 @@ public class Variable extends Expression {
         String[] parts = variables.split(";");
         try {
             for (String part : parts) {
+                part = part.trim();
                 String[] partParts = part.split(" ");
-                int i = Objects.equals(partParts[0], "") ? 1 :0;
-                if (Objects.equals(name, partParts[i])) {
-                    return Double.parseDouble(partParts[2 + i]);
+                if (Objects.equals(name, partParts[0])) {
+                    return Double.parseDouble(partParts[2]);
                 }
             }
         } catch (NumberFormatException e) {
