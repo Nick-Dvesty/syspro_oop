@@ -8,6 +8,9 @@ import ru.nsu.syspro.muller.Number;
 import ru.nsu.syspro.muller.Sub;
 import ru.nsu.syspro.muller.Variable;
 
+/**
+ * convertor method Test.
+ */
 public class ConverterTest {
     @Test
     void testConvert() {

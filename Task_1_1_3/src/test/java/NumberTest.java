@@ -2,6 +2,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.syspro.muller.Number;
 
+/**
+ * Number class Test.
+ */
 public class NumberTest {
 
     @Test void testConstructor() {

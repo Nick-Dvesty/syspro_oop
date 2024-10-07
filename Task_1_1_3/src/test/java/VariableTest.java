@@ -2,6 +2,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.syspro.muller.Variable;
 
+/**
+ * Variable Test.
+ */
 public class VariableTest {
     @Test
     public void testConstructor() {
