@@ -18,7 +18,7 @@ public class EvalTest {
         Expression vr = new Add(new Number(2), new Mul(new Number(5),
             new Variable("x")));
         Assertions.assertEquals(12, vr.eval("x = 2"));
-        vr = new Add (new Sub(new Number(40), new Mul(new Number(3),
+        vr = new Add(new Sub(new Number(40), new Mul(new Number(3),
             new Variable("x"))), new Mul(new Number(5), new Variable("y")));
         Assertions.assertEquals(-65, vr.eval("x = 40; y = 3"));
         vr = new Mul(new Add(new Number(40), new Mul(new Number(3),

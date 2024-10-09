@@ -21,7 +21,8 @@ public class Variable extends Expression {
         for (int i = 0; i < name.length(); i++) {
             if ((name.charAt(i) > 'Z' || name.charAt(i) < 'A')
                 && (name.charAt(i) > 'z' || name.charAt(i) < 'a')) {
-                throw new IllegalArgumentException("The variable" + name + "contains invalid characters");
+                throw new IllegalArgumentException("The variable" + name +
+                    "contains invalid characters");
             }
         }
         this.name = name;
