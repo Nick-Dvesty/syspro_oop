@@ -1,0 +1,42 @@
+Task_1_1_3/.gradle
+Task_1_1_3/build/
+!Task_1_1_3/gradle/wrapper/gradle-wrapper.jar
+!Task_1_1_3/**/src/main/**/build/
+!Task_1_1_3/**/src/test/**/build/
+
+### IntelliJ IDEA ###
+Task_1_1_3/.idea/modules.xml
+Task_1_1_3/.idea/jarRepositories.xml
+Task_1_1_3/.idea/compiler.xml
+Task_1_1_3/.idea/libraries/
+*.iws
+*.iml
+*.ipr
+Task_1_1_3/out/
+!Task_1_1_3/**/src/main/**/out/
+!Task_1_1_3/**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
