@@ -7,6 +7,9 @@ import java.util.List;
  */
 public interface Graph {
 
+    int getSize();
+
+
     /**
      * Add vertex in graph.
      * @param keyVer vertex's key in hashMap
