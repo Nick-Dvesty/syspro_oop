@@ -1,5 +1,7 @@
 package ru.nsu.syspro.muller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -8,7 +10,8 @@ import java.util.List;
 public interface Graph {
 
     int getSize();
-
+    boolean HaveVertex(int keyVer);
+    boolean HaveEdge(int keyVer1, int keyVer2);
 
     /**
      * Add vertex in graph.
@@ -50,15 +53,16 @@ public interface Graph {
     void readFile(String fileName);
 
     /**
+     * Creates a graph based on the input stream.
+     * @param reader the main data input stream
+     */
+    void readBufferedReader(BufferedReader reader) throws IOException;
+
+    /**
      * Compare graphs.
      * @param graph other graph
      * @return result compare
      */
     boolean equals(Graph graph);
 
-    /**
-     * Sort this graph.
-     * @return sorted sequence vertex
-     */
-    List<Integer> TopologySort();
 }

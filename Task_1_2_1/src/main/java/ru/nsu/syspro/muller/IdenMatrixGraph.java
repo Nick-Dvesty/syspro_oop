@@ -1,5 +1,7 @@
 package ru.nsu.syspro.muller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +13,13 @@ public class IdenMatrixGraph implements Graph {
 
     private int edgeSize;
 
-    private HashMap<Integer, Integer> keys;
+    private HashMap<Integer, Integer> keyIndexMap;
 
     public IdenMatrixGraph() {
         vertexSize = 0;
         edgeSize = 0;
         matrix = new int[8][8];
-        keys = new HashMap<Integer, Integer>();
+        keyIndexMap = new HashMap<Integer, Integer>();
     }
 
     @Override
@@ -26,26 +28,49 @@ public class IdenMatrixGraph implements Graph {
     }
 
     @Override
+    public boolean HaveVertex(int keyVer) {
+        return keyIndexMap.containsKey(keyVer);
+    }
+
+    @Override
+    public boolean HaveEdge(int keyVer1, int keyVer2) {
+        if (!keyIndexMap.containsKey(keyVer1)) {
+            throw new IllegalArgumentException("invalid key:" + keyVer1);
+        }
+        if (!keyIndexMap.containsKey(keyVer2)) {
+            throw new IllegalArgumentException("invalid key:" + keyVer2);
+        }
+        for (int i = 0; i < edgeSize; i++) {
+            if (matrix[keyIndexMap.get(keyVer1)][i] == 1
+                && matrix[keyIndexMap.get(keyVer2)][i] == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void addVertex(int keyVer){
         if (vertexSize == matrix.length) {
             incVerMatrix();
             vertexSize++;
         }
-        keys.put(keyVer, vertexSize-1);
+        keyIndexMap.put(keyVer, vertexSize-1);
     }
 
     private void incVerMatrix() {
+
     }
 
     @Override
     public void removeVertex(int keyVer) {
-        var rem = keys.remove(keyVer);
+        var rem = keyIndexMap.remove(keyVer);
         if (rem == vertexSize - 1) {
             vertexSize--;
         } else {
             delVerMatrix(rem);
         }
-        keys.remove(keyVer);
+        keyIndexMap.remove(keyVer);
     }
 
     private void delVerMatrix(Integer rem) {
@@ -53,8 +78,8 @@ public class IdenMatrixGraph implements Graph {
 
     @Override
     public void addEdge(int keyVer1, int keyVer2) {
-        var ind1 = keys.get(keyVer1);
-        var ind2 = keys.get(keyVer2);
+        var ind1 = keyIndexMap.get(keyVer1);
+        var ind2 = keyIndexMap.get(keyVer2);
         int indEdge;
         if (edgeSize == matrix[0].length){
             incEdgeMatrix();
@@ -72,21 +97,26 @@ public class IdenMatrixGraph implements Graph {
 
     @Override
     public void removeEdge(int keyVer1, int keyVer2){
-        var ind1 = keys.get(keyVer1);
-        var ind2 = keys.get(keyVer2);
+        var ind1 = keyIndexMap.get(keyVer1);
+        var ind2 = keyIndexMap.get(keyVer2);
         matrix[ind1][ind2] = 0;
     }
 
     @Override
     public List<Integer> getAdjacentVertex(int keyVer) {
         List<Integer> ret = new ArrayList<>();
-        var ind = keys.get(keyVer);
+        var ind = keyIndexMap.get(keyVer);
         for (int i = 0; i < matrix.length; i++) {
             if (matrix[ind][i] == 1) {
                 ret.add(i);
             }
         }
         return ret;
+    }
+
+    @Override
+    public void readBufferedReader(BufferedReader reader) throws IOException {
+
     }
 
     @Override
@@ -99,8 +129,4 @@ public class IdenMatrixGraph implements Graph {
         return false;
     }
 
-    @Override
-    public List<Integer> TopologySort() {
-        return null;
-    }
 }
