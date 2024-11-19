@@ -4,6 +4,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.syspro.muller.FndSubStr;
@@ -77,6 +79,38 @@ public class TestFind {
         assertThrows(NullPointerException.class, () -> {
             var ansFind = FndSubStr.find("test", null);
         });
+    }
+    @Test
+    public void test7() throws IOException {
+        Writer writer = new FileWriter("./test.txt", StandardCharsets.UTF_8);
+        ArrayList<Long> ans = new ArrayList<>();
+        for (long i = 0; i < 2<<20; i++) {
+           if (i % (2<<19) == 0 ) {
+               writer.write(String.valueOf(1));
+               ans.add(i);
+           } else {
+               writer.write(String.valueOf(2));
+           }
+        }
+        writer.close();
+        var ansFind = FndSubStr.find("./test.txt", "1");
+        Assertions.assertEquals(ansFind.size(), ans.size());
+        for (int i = 0; i < ansFind.size(); i++) {
+            Assertions.assertEquals(ans.get(i), ansFind.get(i));
+        }
+        File file = new File("./test.txt");
+        file.delete();
+    }
+
+    @Test
+    public void test8() throws IOException {
+        Writer writer = new FileWriter("./test.txt", StandardCharsets.UTF_8);
+        writer.write("lglhk");
+        writer.close();
+        var ansFind = FndSubStr.find("./test.txt", "lglhkdfsfsff");
+        Assertions.assertEquals(ansFind.size(), 0);
+        File file = new File("./test.txt");
+        file.delete();
     }
 
 }
