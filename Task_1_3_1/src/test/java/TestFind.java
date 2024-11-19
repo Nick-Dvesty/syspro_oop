@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.syspro.muller.FndSubStr;
@@ -80,12 +79,13 @@ public class TestFind {
             var ansFind = FndSubStr.find("test", null);
         });
     }
+
     @Test
     public void test7() throws IOException {
         Writer writer = new FileWriter("./test.txt", StandardCharsets.UTF_8);
         ArrayList<Long> ans = new ArrayList<>();
-        for (long i = 0; i < 2<<20; i++) {
-           if (i % (2<<19) == 0 ) {
+        for (long i = 0; i < (2 << 20); i++) {
+           if (i % (2 << 19) == 0 ) {
                writer.write(String.valueOf(1));
                ans.add(i);
            } else {
