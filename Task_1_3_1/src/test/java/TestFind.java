@@ -85,12 +85,12 @@ public class TestFind {
         Writer writer = new FileWriter("./test.txt", StandardCharsets.UTF_8);
         ArrayList<Long> ans = new ArrayList<>();
         for (long i = 0; i < (2 << 20); i++) {
-           if (i % (2 << 19) == 0 ) {
-               writer.write(String.valueOf(1));
-               ans.add(i);
-           } else {
-               writer.write(String.valueOf(2));
-           }
+            if (i % (2 << 19) == 0 ) {
+                writer.write(String.valueOf(1));
+                ans.add(i);
+            } else {
+                writer.write(String.valueOf(2));
+            }
         }
         writer.close();
         var ansFind = FndSubStr.find("./test.txt", "1");
