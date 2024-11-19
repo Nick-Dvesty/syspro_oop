@@ -6,13 +6,11 @@ import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.syspro.Muller.FndSubStr;
+import ru.nsu.syspro.muller.FndSubStr;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class testFind {
-
-
+public class TestFind {
 
     @Test
     public void test() throws IOException {
@@ -34,7 +32,7 @@ public class testFind {
         Writer writer = new FileWriter("./test.txt", StandardCharsets.UTF_8);
         writer.write("5555");
         writer.close();
-        long[] ans = {0,1,2};
+        long[] ans = {0, 1, 2};
         var ansFind = FndSubStr.find("./test.txt", "55");
         Assertions.assertEquals(ansFind.size(), ans.length);
         for (int i = 0; i < ansFind.size(); i++) {
@@ -50,7 +48,7 @@ public class testFind {
         writer.write("");
         writer.close();
         var ansFind = FndSubStr.find("./test.txt", "1");
-        Assertions.assertEquals(ansFind.size(),0);
+        Assertions.assertEquals(ansFind.size(), 0);
         File file = new File("./test.txt");
         file.delete();
     }

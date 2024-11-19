@@ -1,4 +1,4 @@
-package ru.nsu.syspro.Muller;
+package ru.nsu.syspro.muller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,7 +20,9 @@ abstract public class FndSubStr {
                 return Character.toCodePoint(surrogChar, (char) ansChar);
             } else if (Character.isHighSurrogate((char) ansChar)) {
                 surrogChar = (char) ansChar;
-            } else return ansChar;
+            } else {
+                return ansChar;
+            }
         }
         return -1;
     }
